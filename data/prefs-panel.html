@@ -1,0 +1,245 @@
+<html>
+	<head>
+	<meta charset="UTF-8">
+	<script src="jQ/jquery-3.1.0.min.js"></script>
+	<script src="jQ-UI/jquery-ui.min.js"></script>
+	<link rel="stylesheet" href="jQ-UI/jquery-ui.min.css">
+	<link rel="stylesheet" href="jQ-UI/jquery-ui.structure.min.css">
+	<link rel="stylesheet" href="jQ-UI/jquery-ui.theme.min.css">
+	<style>
+		body {
+			background-color: #393f4d;
+			//font-size: 1.1rem;
+			text-align: center;
+		}
+		
+
+		
+		.close-wrapper {
+			text-align: right;
+			margin-bottom: 15px;
+		}
+		
+		.close-button {
+			padding: 2px 5px;
+		}
+	
+		.ui-controlgroup {
+			display: inline-block;
+			text-align: center;
+			margin: 0 auto;
+		}
+
+		.ui-controlgroup .ui-controlgroup-item {
+			text-align: left;
+		}
+		
+		.ui-controlgroup  button.ui-button,
+		.ui-controlgroup .ui-controlgroup-label {
+			text-align: center;
+		}
+		
+		.ui-controlgroup > .commentsLang-label {
+			margin-top: 10px;
+		}
+		.ui-controlgroup .buttons-wrapper {
+			margin-top: 20px;
+		}
+		
+		
+		.ui-controlgroup .buttons-wrapper button.ui-button {
+			text-align: center;
+		}
+	
+		.reset-wrapper {
+			margin-top: 10px;
+		}
+		
+		.button-reset {
+			width: 80%;
+		}
+		
+		.buttons-wrapper {
+			text-align: center;
+		}
+		
+		.buttons-wrapper button.ui-button {
+			width: 32%;
+		}
+	</style>
+	<script>
+	  $(function() {
+		//Initialize the control group and correct rounding
+		$(".prefs-wrapper,.close-group").controlgroup({
+		  "direction": "vertical"
+		});
+		$(".close-button").button("option","icons", {primary: "ui-icon-close"});
+		
+		$(".set-corner-bottom").switchClass("ui-corner-top ui-corner-left ui-corner-right ui-corner-all ui-corner-tl ui-corner-tr ui-corner-bl ui-corner-br", "ui-corner-bottom");
+		$(".set-corner-all").switchClass("ui-corner-top ui-corner-bottom ui-corner-left ui-corner-right ui-corner-tl ui-corner-tr ui-corner-bl ui-corner-br", "ui-corner-all");
+		$(".children-set-corner-all").children().switchClass("ui-corner-top ui-corner-bottom ui-corner-left ui-corner-right ui-corner-tl ui-corner-tr ui-corner-bl ui-corner-br", "ui-corner-all");
+		$(".set-corner-top").switchClass("ui-corner-bottom ui-corner-left ui-corner-right ui-corner-all ui-corner-tl ui-corner-tr ui-corner-bl ui-corner-br", "ui-corner-top");
+		});
+		
+		//Handler for closing the panel (since noautohide is set to true)
+		var closePanel = function() {
+			addon.port.emit("close-panel", "close");
+		}
+		
+		var defaultPrefs = {
+			useClipboard: false,
+			topContext: true,
+			cleanLines: true,
+			commentsLang: "en",
+			globalUse: false,
+		};
+		
+		var currentPrefs = {};
+		
+		//Handler for the "Reset to default" button
+		var resetPrefs = function() {
+			for (var eachPref in defaultPrefs) {
+				if (defaultPrefs.hasOwnProperty(eachPref)) {
+					prefValue = defaultPrefs[eachPref];
+					var $prefInput = $("input[name="+eachPref+"]");
+					if (typeof prefValue === "string") {
+						if ($prefInput.is(":radio")) {
+							$prefInput
+								.filter("[value="+prefValue+"]")
+								.prop("checked", true)
+								.change();
+						} else {
+							$prefInput.val(prefValue).change();
+						}
+					} else {
+						$prefInput.prop("checked",prefValue).change();
+					}
+				}
+			}
+		}
+		
+		var setPrefs = function() {
+			var newPrefs = {};
+			$(".prefs-wrapper input").each(function(){
+				optionName = $ (this).attr("name");
+				optionValue = $ (this).val();
+				
+				inputType = $ (this).attr("type");
+				
+				switch (inputType) {
+					case "radio":
+						if ($ (this).is(":checked")) {
+							newPrefs[optionName] = optionValue;
+						}
+						break;
+					case "checkbox":
+						newPrefs[optionName] = $ (this).is(":checked");
+						break;
+				}
+			});
+			addon.port.emit("set-prefs", newPrefs);
+		}
+
+		//Set input states to match current preferences
+		addon.port.on("load-prefs",function(prefs) {
+			currentPrefs = prefs;
+			for (var pref in prefs) {
+				if (prefs.hasOwnProperty(pref)) {
+					var prefValue = prefs[pref];
+					var prefType = typeof prefValue;
+					
+					var $prefInput = $("[name="+pref+"]")
+					
+					switch (prefType) {
+						case "boolean":
+							$prefInput.prop("checked",prefValue).change();
+							break;
+						case "string":
+							prefInputType = $prefInput.attr("type");
+							switch (prefInputType) {
+								case "radio":
+									$prefInput
+										.filter("[value="+prefValue+"]")
+										.prop("checked", true).change();
+									break;
+								case "text":
+									$prefInput.val(prefValue).change();
+									break;
+							}
+							break;
+					}
+				}
+			}
+		});
+
+		
+		var checkChanges = function(el) {
+			var prefsChanged = false;
+			var currentPrefValue = currentPrefs[$ (el).attr("name")];
+			if ($ (el).is(":radio")) {
+				var currentPrefRadio = $("[type=radio][value="+currentPrefValue+"]");
+				if (!currentPrefRadio.is(":checked")) {
+					prefsChanged = true;
+				}
+			} else if ($(el).is(":checkbox")) {
+				if ($(el).prop("checked") !== currentPrefValue) {
+					prefsChanged = true;
+				}				
+			}
+			if (prefsChanged)
+				$(".button-apply").button("enable");
+		};
+		
+		//Blur a checkbox on uncheck so the button default state is shown
+		$("[type=checkbox]").change(function(){
+			if (!$ (this).is(":checked")) {
+				setTimeout(function() {
+					$ (this).blur();
+				},50);		
+			}
+		});
+		
+		$(document).on("keyup",function(event){
+			if (event.which == 27) {
+				closePanel();
+			}
+		});
+	</script>
+	</head>
+	<body>
+	<div class="close-wrapper">
+		<div class="close-group">
+			<button class="close-button set-corner-all" onclick="closePanel();" />
+		</div>
+	</div>
+
+	<div class="prefs-wrapper">		
+		<input type="checkbox" name="useClipboard" id="useClipboard" value="1" onchange="checkChanges(this)"/>
+		<label for="useClipboard" class="set-corner-top">Use Clipboard</label>
+		<input type="checkbox" name="topContext" id="topContext" value="1" onchange="checkChanges(this)"/>
+		<label for="topContext">Add-on context menu on top</label>
+		<input type="checkbox" name="cleanLines" id="cleanLines" value="1" onchange="checkChanges(this)"/>
+		<label for="cleanLines">Clean element labels from lines</label>
+		<input type="checkbox" name="globalUse" id="globalUse" value="1" onchange="checkChanges(this)"/>
+		<label for="globalUse" class="set-corner-bottom">Show context menu on all pages</label>
+		<div class="ui-controlgroup-label commentsLang-label set-corner-top">
+			Question comments language
+		</div>
+		<input type="radio" name="commentsLang" id="clen" value="en" onchange="checkChanges(this)"/>
+		<label for="clen">English</label>
+		<input type="radio" name="commentsLang" id="clde" value="de" onchange="checkChanges(this)"/>
+		<label for="clde" class="set-corner-bottom">German</label>
+		
+		<div class="reset-wrapper">
+			<button class="button-reset set-corner-all" onclick="resetPrefs()">Reset to default</button>
+		</div>
+		
+		<div class="buttons-wrapper children-set-corner-all">
+			<button class="button-ok" onclick="setPrefs();closePanel();">OK</button>
+			<button class="button-apply" onclick="setPrefs();$(this).button('disable')" disabled="true">Apply</button>
+			<button class="button-cancel" onclick="closePanel();">Cancel</button>
+		</div>
+	</div>
+
+	</body>
+</html>
