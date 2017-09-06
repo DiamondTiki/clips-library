@@ -1,0 +1,107 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<script src="../../res/jQ/jquery-3.1.0.min.js"></script>
+		<script src="../../res/jQ-UI/jquery-ui.min.js"></script>
+		<link rel="stylesheet" href="../../res/jQ-UI/jquery-ui.min.light.css">
+		<link rel="stylesheet" href="../../res/jQ-UI/jquery-ui.structure.min.light.css">
+		<link rel="stylesheet" href="../../res/jQ-UI/jquery-ui.theme.min.light.css">
+		<link rel="stylesheet" href="../../res/jQ-UI/jquery-ui.min.dark.css">
+		<link rel="stylesheet" href="../../res/jQ-UI/jquery-ui.structure.min.dark.css">
+		<link rel="stylesheet" href="../../res/jQ-UI/jquery-ui.theme.min.dark.css">
+		<link rel="stylesheet" href="sidebar.css">
+		<script src="sidebar.js"></script>
+	</head>
+	<body class="ui-theme-light">
+	<div class="accordion-wrapper clips-list">	
+		<h3 class="accordion-header">Control Elements</h3>
+		<div class="accordion-item control-item">
+			<div class="ctrlg-wrapper">
+				<button data-clip="makeTerm">Add Term</button>
+				<button data-clip="makeQuota">Add Quota</button>
+				<button data-clip="makeValidate">Validate Tag</button>
+				<button data-clip="makeResource">Resource Tag</button>
+				<button data-clip="makeExec">Exec Tag</button>
+				<button data-clip="makeBlock">Block Tag</button>
+				<button data-clip="makeBlockChildren">Block Tag (randomizeChildren)</button>
+				<button data-clip="makeLoop">Loop Tag</button>
+				<button data-clip="makeMarker">Make Marker</button>
+				<button data-clip="makeCondition">Make Condition</button>
+			</div>		
+		</div>
+		
+		<h3 class="accordion-header">Question Types</h3>
+		<div class="accordion-item">
+			<div class="ctrlg-wrapper">
+	
+				<button data-clip="makeRadio">Make Radio</button>
+				<button data-clip="makeRating">Make Rating</button>			
+				<button data-clip="makeCheckbox">Make Checkbox</button>			
+				<button data-clip="makeSelect">Make Select</button>			
+				<button data-clip="makeText">Make Text</button>			
+				<button data-clip="makeTextarea">Make Textarea</button>			
+				<button data-clip="makeNumber">Make Number</button>			
+				<button data-clip="makeAutosum">Make Autosum</button>		
+				<button data-clip="makeAutosumPercent">Make Autosum (Percent)</button>
+				<button data-clip="makeSurveyComment">Make Survey Comment</button>
+				<button data-clip="makeAutofill">Make Autofill</button>	
+			</div>
+		</div>
+		
+		<h3 class="accordion-header">Question Elements</h3>
+		<div class="accordion-item">
+			<div class="ctrlg-wrapper">
+				<button data-clip="makeRows">Make Rows</button>	
+				<button data-clip="makeRowsRatingUp">Make Rows (Rating L-H)</button>	
+				<button data-clip="makeRowsRatingDown">Make Rows (Rating H-L)</button>	
+				<button data-clip="makeCols">Make Cols</button>		
+				<button data-clip="makeColsRatingUp">Make Cols (Rating L-H)</button>		
+				<button data-clip="makeColsRatingDown">Make Cols (Rating H-L)</button>	
+				<button data-clip="makeChoices">Make Choices</button>	
+				<button data-clip="makeChoicesRatingUp">Make Choices (Rating L-H)</button>
+				<button data-clip="makeChoicesRatingDown">Make Choices (Rating H-L)</button>	
+				<button data-clip="makeNoAnswer">Make NoAnswer</button>		
+				<button data-clip="makeGroups">Make Groups</button>	
+				<button data-clip="makeQuestionComment">Make Question Comment</button>	
+				<button data-clip="makeAutofillRows">Make Autofill Rows</button>
+			</div>
+		</div>
+		
+		<h3 class="accordion-header">Text Formatting</h3>
+		<div class="accordion-item">
+			<div class="ctrlg-wrapper">
+				<button data-clip="makeTag_b">&lt;b&gt;</button>
+				<button data-clip="makeTag_u">&lt;u&gt;</button>
+				<button data-clip="makeTag_ub">&lt;u&gt;&lt;b&gt;</button>
+				<button data-clip="makeTag_i">&lt;i&gt;</button>
+				<button data-clip="makeTag_ul">&lt;ul&gt;</button>
+				<button data-clip="makeTag_ol">&lt;ol&gt;</button>
+				<button data-clip="makeTag_li">&lt;li&gt;</button>
+				<button data-clip="makeTagLines_li">&lt;li&gt;s</button>
+				<button data-clip="addTag_br">&lt;br&gt;</button>
+				<button data-clip="addTag_brbr">&lt;br&gt;&lt;br&gt;</button>
+				<button data-clip="makeTag_sup">&lt;sup&gt;</button>
+				<button data-clip="makeTag_sub">&lt;sub&gt;</button>
+				<button data-clip="makeTag_note">&lt;note&gt;</button>
+				<button data-clip="makeTag_spanClass">&lt;span class=""&gt;</button>
+				<button data-clip="makeTag_spanStyle">&lt;span style=""&gt;</button>
+			</div>
+			<!--
+			<div class="ctrlg-wrapper">
+				<div class="ui-controlgroup-label">
+					Attributes
+				</div>
+			</div>	
+			-->
+		</div>
+		<h3 class="accordion-header">XML styles</h3>
+		<div class="accordion-item">
+			<div class="ctrlg-wrapper">
+				<button data-clip="addStyleBlank">New Style (blank)</button>
+				<button data-clip="newStyle">New Style</button>
+			</div>
+		</div>
+	</div>
+	<button id="prefsButton">Preferences</button>
+	</body>
+</html>

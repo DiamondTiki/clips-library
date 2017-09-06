@@ -1,0 +1,32 @@
+body {
+	background-color: #393f4d;
+	text-align: center;
+	font-size: 12px;
+}
+
+.ui-controlgroup {
+	display: inline-block;
+	text-align: center;
+	vertical-align: top;
+	margin: 0 auto;
+	width: 100%;
+}
+
+.ui-controlgroup button.ui-button,
+.ui-controlgroup .ui-controlgroup-label {
+	text-align: center;
+
+}
+
+.ui-controlgroup .ui-controlgroup-label {
+	font-size: 1.2em;
+	font-style: italic;
+}
+
+.ui-controlgroup-vertical .ui-controlgroup-label.ui-controlgroup-label.ui-widget-content {
+		border-bottom: 3px solid rgb(9, 42, 92);	
+}
+
+#prefsButton {
+	margin-top: 25px;
+}
