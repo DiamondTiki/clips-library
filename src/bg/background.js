@@ -22,9 +22,6 @@ var helpers = {
 		})
 	},
 	
-	// List of all jQuery UI custom class namespaced themes the extension supports
-	themes: ["ui-theme-light", "ui-theme-dark"],
-	
 	// Like Python's str.strip() only the syntax is helpers.strip(str)
 	strip: function(str) {
 		return str.replace(/^\s+|\s+$/g,"");	
@@ -1923,39 +1920,48 @@ function cmListener(cmdata, tab) {
 
 // Runtime listener
 function rtListener(message, tab, sendResponse) {
-	console.log("Runtime message received:");
-	console.log(message);
-	
-	// Styles panel command info request
-	if (message.type === "panel-command-info-request") {
-		sendResponse(helpers.panelCommandInfo)
-	}
-	
-	// Styles panel handler section
-	if (message.type === "style-selection") {
 
-		var commandInfo = message.commandInfo;
-		var selectedStyle = message.style;
-		var styleMode = message.mode;
-		var styleType = message.styleType;
+	switch (message.type) {
+		// Styles panel command info request
+		case "panel-command-info-request":
+			sendResponse(helpers.panelCommandInfo);
+			break;
 		
-		if (styleType == "special") {
-			var processedText = clips.newStyleSpecial(selectedStyle);
-		} else {
-			var processedText = styleMode === "instead" ? clips.newStyleInstead(selectedStyle) : clips.newStyleBeforeAfter(message);
-		}
+		case "options-info-request":
+			console.log("sending defaults", helpers.defaultOptions);
+			sendResponse(helpers.defaultOptions);
+			break;
 		
-		setTabText(commandInfo.tabId, processedText);		
-	}
+		// Styles panel handler section
+		case "style-selection":
+			var commandInfo = message.commandInfo;
+			var selectedStyle = message.style;
+			var styleMode = message.mode;
+			var styleType = message.styleType;
+			
+			if (styleType == "special") {
+				var processedText = clips.newStyleSpecial(selectedStyle);
+			} else {
+				var processedText = styleMode === "instead" ? clips.newStyleInstead(selectedStyle) : clips.newStyleBeforeAfter(message);
+			}
+			
+			setTabText(commandInfo.tabId, processedText);
+			break;
+		
+		// Popups panel handler section
+		case "popup-selection": 
+			var commandInfo = message.commandInfo;
+			var popupInfo = message.popupInfo;
+			
+			var processedText = popupInfo.codeType === "popup" ? clips.addPopup(popupInfo) : clips.addTooltip(popupInfo);
+			
+			setTabText(commandInfo.tabId, processedText);
+			
+			break;
+		
+		default:
+			break;
 	
-	// Popups panel handler section
-	if (message.type === "popup-selection") {
-		var commandInfo = message.commandInfo;
-		var popupInfo = message.popupInfo;
-		
-		var processedText = popupInfo.codeType === "popup" ? clips.addPopup(popupInfo) : clips.addTooltip(popupInfo);
-		
-		setTabText(commandInfo.tabId, processedText);
 	}
 }
 

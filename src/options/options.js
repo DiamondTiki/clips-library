@@ -10,24 +10,39 @@ $(function() {
 	$(".set-corner-top").switchClass("ui-corner-bottom ui-corner-left ui-corner-right ui-corner-all ui-corner-tl ui-corner-tr ui-corner-bl ui-corner-br", "ui-corner-top");
 
 	var storage = browser.storage.local;	
-	var background = browser.extension.getBackgroundPage();
 	
-	var defaultOptions = $.extend({}, background.helpers.defaultOptions);
+	// List of all jQuery UI custom class namespaced themes the extension supports
+	var themes = ["ui-theme-light", "ui-theme-dark"];
+	
+	var defaultOptions;
+	
+
 	
 	var currentOptions;
 	
 	var refreshTheme = function(newClass) {
-		$ ("body").removeClass( background.helpers.themes.join(" ") ).addClass(newClass);
+		$ ("body").removeClass( themes.join(" ") ).addClass(newClass);
 	}
 	
 	var onError = function(err) {
 		console.log("Promise rejected");
 		console.log(err)
 	}
+
+	// Disable the controlgroups while we get the tabid from the background page
+	$(".prefs-sub-wrapper").each(function() {$ (this).controlgroup("disable")});
 	
-	var gettingOptions = storage.get({
-		options: defaultOptions
-	}).then(response => {
+	var gettingOptions = browser.runtime.sendMessage({
+		type: "options-info-request"
+	}).then((response) => {
+		defaultOptions = response;
+		$(".prefs-sub-wrapper").each(function() {$ (this).controlgroup("enable")});
+		
+		return storage.get({options: defaultOptions});
+	},(reason) => {
+		console.log("Failed getting general options info (defaults) from background");
+		console.log(reason);
+	}).then((response) => {
 		currentOptions = response.options;
 		
 		refreshTheme("ui-theme-" + currentOptions.theme);

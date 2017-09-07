@@ -70,13 +70,7 @@ $(function() {
 				
 			});
 			
-			browser.tabs.getCurrent().then(thisTab => {
-				console.log("thisTab", thisTab);
-				var closing = browser.tabs.remove(thisTab.id);
-			}, reason => {
-				console.log("Failed getting current tab");
-				console.log(reason);
-			});		
+			window.close();	
 		});
 	}
 	
@@ -127,12 +121,7 @@ $(function() {
 				commandInfo: commandInfo
 			});
 			
-			browser.tabs.getCurrent().then(thisTab => {
-				var closing = browser.tabs.remove(thisTab.id);
-			}, reason => {
-				console.log("Failed getting current tab");
-				console.log(reason);
-			});
+			window.close();
 		})
 	}
 });
