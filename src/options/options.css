@@ -1,0 +1,29 @@
+body {
+	text-align: center;
+}
+
+body.ui-theme-dark {
+	background-color: #393f4d;
+}
+
+.ui-controlgroup {
+	display: inline-block;
+	text-align: center;
+	margin: 0 auto;
+}
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.prefs-sub-wrapper {
+	float: left;
+	margin-right: 10px;
+	margin-bottom: 10px;
+}
+
+.ui-controlgroup .ui-controlgroup-item.ui-controlgroup-label {
+	text-align: center;
+}

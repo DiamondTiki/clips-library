@@ -1,0 +1,410 @@
+{
+	"cm_control": {
+		"message": "Control",
+		"description": "Control elements menu text"
+	},
+	"cm_addTerm": {
+		"message": "Add Term",
+		"description": "Make term tag menu item"
+	},
+	"cm_addQuota": {
+		"message": "Add Quota",
+		"description": "Make quota tag menu item"
+	},
+	"cm_validateTag": {
+		"message": "Validate Tag",
+		"description": "Make validate tag menu item"
+	},
+	"cm_resourceTag": {
+		"message": "Resource Tag",
+		"description": "Make resource tag menu item"
+	},
+	"cm_execTag": {
+		"message": "Exec Tag",
+		"description": "Make exec tag menu item"
+	},
+	"cm_blockTag": {
+		"message": "Block Tag",
+		"description": "Make block tag menu item"
+	},
+	"cm_blockTag_children": {
+		"message": "Block Tag (randomizeChildren)",
+		"description": "Make block tag with randomizeChildren"
+	},
+	"cm_loopTag": {
+		"message": "Loop Tag",
+		"description": "Make loop tag menu item"
+	},
+	"cm_makeMarker": {
+		"message": "Make Marker",
+		"description": "Make marker tag menu item"
+	},
+	"cm_makeCondition": {
+		"message": "Make Condition",
+		"description": "Make condition tag menu item"
+	},
+	"cm_quesitonsElements": {
+		"message": "Questions & Elements",
+		"description": "Questions & Elements menu text"
+	},
+	"cm_makeRadio": {
+		"message": "Make Radio",
+		"description": "Make radio question tag menu item"
+	},
+	"cm_makeRating": {
+		"message": "Make Rating",
+		"description": "Make radio question tag with type=rating menu item"
+	},
+	"cm_makeCheckbox": {
+		"message": "Make Checkbox",
+		"description": "Make checkbox question tag menu item"
+	},
+	"cm_makeSelect": {
+		"message": "Make Select",
+		"description": "Make select question tag menu item"
+	},
+	"cm_makeText": {
+		"message": "Make Text",
+		"description": "Make text question tag menu item"
+	},
+	"cm_makeTextarea": {
+		"message": "Make Textarea",
+		"description": "Make textarea question tag menu item"
+	},
+	"cm_makeNumber": {
+		"message": "Make Number",
+		"description": "Make number question tag menu item"
+	},
+	"cm_makeAutosum": {
+		"message": "Make Autosum",
+		"description": "Make number question tag with autosum menu item"
+	},
+	"cm_makeAutosumPercent": {
+		"message": "Make Autosum (Percent)",
+		"description": "Make number question tag with autosum with percentages menu item"
+	},
+	"cm_makeSurveyComment": {
+		"message": "Make Survey Comment",
+		"description": "Make survey comment menu item"
+	},
+	"cm_makeAutofill": {
+		"message": "Make Autofill",
+		"description": "Make autofill question menu item"
+	},
+	"cm_makeRows": {
+		"message": "Make Rows",
+		"description": "Make row tags menu item"
+	},
+	"cm_makeRowsRatingUp": {
+		"message": "Make Rows (Rating L-H)",
+		"description": "Make row tags with incrementing values menu item"
+	},
+	"cm_makeRowsRatingDown": {
+		"message": "Make Rows (Rating H-L)",
+		"description": "Make row tags with decrementing values menu item"
+	},
+	"cm_makeCols": {
+		"message": "Make Cols",
+		"description": "Make col tags menu item"
+	},
+	"cm_makeColsRatingUp": {
+		"message": "Make Cols (Rating L-H)",
+		"description": "Make col tags with incrementing values menu item"
+	},
+	"cm_makeColsRatingDown": {
+		"message": "Make Cols (Rating H-L)",
+		"description": "Make col tags with decrementing values menu item"
+	},
+	"cm_makeChoices": {
+		"message": "Make Choices",
+		"description": "Make choice tags menu item"
+	},
+	"cm_makeChoicesRatingUp": {
+		"message": "Make Choices (Rating L-H)",
+		"description": "Make choice tags with incrementing values menu item"
+	},
+	"cm_makeChoicesRatingDown": {
+		"message": "Make Choices (Rating H-L)",
+		"description": "Make choice tags with decrementing values menu item"
+	},
+	"cm_makeNoAnswer": {
+		"message": "Make NoAnswer",
+		"description": "Make noanswer tag menu item"
+	},
+	"cm_makeGroups": {
+		"message": "Make Groups",
+		"description": "Make group tags menu item"
+	},
+	"cm_makeQuestionComment": {
+		"message": "Make Question Comment",
+		"description": "Make question comment tag menu item"
+	},
+	"cm_makeAutofillRows": {
+		"message": "Make Autofill Rows",
+		"description": "MAke autofill question row tags menu item"
+	},
+	"cm_textMenu": {
+		"message": "Text Formatting & Attributes",
+		"description": "Text formatting and attributes menu text"
+	},
+	"cm_makeTag_b": {
+		"message": "<b>",
+		"description": "Make b tag menu item"
+	},
+	"cm_makeTag_u": {
+		"message": "<u>",
+		"description": "Make u tag menu item"
+	},
+	"cm_makeTag_ub": {
+		"message": "<u><b>",
+		"description": "Make u > b tag menu item"
+	},
+	"cm_makeTag_i": {
+		"message": "<i>",
+		"description": "Make i tag menu item"
+	},
+	"cm_makeTag_ul": {
+		"message": "<ul>",
+		"description": "Make ul tag menu item"
+	},
+	"cm_makeTag_ol": {
+		"message": "<ol>",
+		"description": "Make ol tag menu item"
+	},
+	"cm_makeTag_li": {
+		"message": "<li>",
+		"description": "Make li tag menu item"
+	},
+	"cm_makeTagLines_li": {
+		"message": "<li>s",
+		"description": "Make li tag per line menu item"
+	},
+	"cm_addTag_br": {
+		"message": "<br>",
+		"description": "Make br tag menu item"
+	},
+	"cm_addTag_brbr": {
+		"message": "<br><br>",
+		"description": "Make br br tag menu item"
+	},
+	"cm_makeTag_sup": {
+		"message": "<sup>",
+		"description": "Make sup tag menu item"
+	},
+	"cm_makeTag_sub": {
+		"message": "<sub>",
+		"description": "Make sub tag menu item"
+	},
+	"cm_makeTag_note": {
+		"message": "<note>",
+		"description": "Make note tag menu item"
+	},
+	"cm_makeTag_spanClass": {
+		"message": "<span class=\"\">",
+		"description": "Make span tag with class menu item"
+	},
+	"cm_makeTag_spanStyle": {
+		"message": "<span style=\"\">",
+		"description": "Make span tag with style menu item"
+	},
+	"cm_addOpen": {
+		"message": "Add Open-End",
+		"description": "Add open=1 menu item"
+	},
+	"cm_addExclusive": {
+		"message": "Add exclusive",
+		"description": "Add exclusive=1 menu item"
+	},
+	"cm_addAggregate": {
+		"message": "Add aggregate",
+		"description": "Add aggregate=0 and percentages=0 menu item"
+	},
+	"cm_addRandomize": {
+		"message": "Add randomize=\"0\"",
+		"description": "Add randomize=0 menu item"
+	},
+	"cm_addOptional": {
+		"message": "Add Optional",
+		"description": "Add optional=1 menu item"
+	},
+	"cm_addShuffleRows": {
+		"message": "Add Shuffle Rows",
+		"description": "Add shuffle=rows menu item"
+	},
+	"cm_addWhereExecute": {
+		"message": "Add where=\"execute\"",
+		"description": "Add where=execute menu item"
+	},
+	"cm_addGroupingCols": {
+		"message": "Add Grouping/Adim Cols",
+		"description": "Add grouping=cols and adim=cols menu item"
+	},
+	"cm_addMinRanks": {
+		"message": "Add MinRanks",
+		"description": "Add minRanks menu item"
+	},
+	"cm_addOnLoadCopyRows": {
+		"message": "Add onLoad Copy Rows",
+		"description": "Add onLoad=copy(rows=True) menu item"
+	},
+	"cm_makeAttrs_alt": {
+		"message": "Add Alts",
+		"description": "Add alt to tags menu item"
+	},
+	"cm_makeAttrs_group": {
+		"message": "Add Groups",
+		"description": "Add groups to tags menu item"
+	},
+	"cm_makeAttrs_value": {
+		"message": "Add Values",
+		"description": "Add value to tags menu item"
+	},
+	"cm_makeAttrs_value_up": {
+		"message": "Add Values (L-H)",
+		"description": "Add incrementing values to tags menu item"
+	},
+	"cm_makeAttrs_value_down": {
+		"message": "Add Values (H-L)",
+		"description": "Add decrementing values to tags menu item"
+	},
+	"cm_miscMenu": {
+		"message": "Miscellaneous Clips (main)",
+		"description": "Misc clips menu text"
+	},
+	"cm_relabelElements": {
+		"message": "Relabel Elements",
+		"description": "Relavel Elements menu item"
+	},
+	"cm_swapRowCol": {
+		"message": "Swap Rows and Columns",
+		"description": "Swap Rows and Columns menu item"
+	},
+	"cm_standardsMenu": {
+		"message": "Standards Clips",
+		"description": "Standards clips menu text"
+	},
+	"cm_makeUsStates": {
+		"message": "Make US States",
+		"description": "Make US States question menu item"
+	},
+	"cm_makeUsStatesRegions": {
+		"message": "Make US States + Region recode",
+		"description": "Make US States and regions questions menu item"
+	},
+	"cm_makeCountries": {
+		"message": "Make Countries",
+		"description": "Make Countries question menu item"
+	},
+	"cm_makeUnselectable_span": {
+		"message": "Make unselectable (span)",
+		"description": "Make unselectable span menu item"
+	},
+	"cm_makeUnselectable_div": {
+		"message": "Make unselectable (div)",
+		"description": "Make unselectable div menu item"
+	},
+	"cm_addUnselectable": {
+		"message": "Add unselectable",
+		"description": "Add unselectable attributes menu item"
+	},
+	"cm_addPopup": {
+		"message": "Add popup/tooltip",
+		"description": "Add popup/tooltip menu item"
+	},
+	"cm_addPopupTemplate": {
+		"message": "Add popup (template)",
+		"description": "Add popup (template) menu item"
+	},
+	"cm_addTooltipTemplate": {
+		"message": "Add tooltip (template)",
+		"description": "Add tooltip (template) menu item"
+	},
+	"cm_rowOrderVirtual": {
+		"message": "Shuffle Rows Virtual",
+		"description": "Shuffle Rows Virtual menu item"
+	},
+	"cm_childOrderBlock": {
+		"message": "Random Order Tracker - Block",
+		"description": "Random Order Tracker - Block menu button"
+	},
+	"cm_childOrderLoop": {
+		"message": "Random Order Tracker - Loop",
+		"description": "Random Order Tracker - Loop menu button"
+	},
+	"cm_dupeCheckVar": {
+		"message": "Dupe check by variable",
+		"description": "Dupe check by variable menu button"
+	},
+	"cm_xmlMenu": {
+		"message": "XML Styles",
+		"description": "XML styles clips menu text"
+	},
+	"cm_addStyleBlank": {
+		"message": "New Style (blank)",
+		"description": "Add blank style tag menu item"
+	},
+	"cm_newStyleInstead": {
+		"message": "New Style",
+		"description": "Add new style tag (mode=instead) menu item"
+	},
+	"cm_addStyleLabel": {
+		"message": "New Style (with label)",
+		"description": "New Style (with label) menu item"
+	},
+	"cm_addStyleCopy": {
+		"message": "Style call/copy",
+		"description": "Style call/copy menu item"
+	},
+	"cm_surveyCss": {
+		"message": "Survey-wide CSS",
+		"description": "Survey-wide CSS menu item"
+	},
+	"cm_surveyJs": {
+		"message": "Survey-wide JS",
+		"description": "Survey-wide JS menu item"
+	},
+	"cm_questionCss": {
+		"message": "Question-specific CSS",
+		"description": "Question-specific CSS menu item"
+	},
+	"cm_questionJs": {
+		"message": "Question-specific JS (after question)",
+		"description": "Question-specific JS (after question) menu item"
+	},
+	"cm_questionJsHead": {
+		"message": "Question-specific JS (in <head>)",
+		"description": "Question-specific JS (in <head>) menu item"
+	},
+	"cm_leftBlankLegend": {
+		"message": "Left-blank-legend",
+		"description": "Left-blank-legend menu item"
+	},
+	"cm_numberPipe": {
+		"message": "Pipe number question in table",
+		"description": "Add number question pipe style menu item"
+	},
+	"cm_disableContinue": {
+		"message": "Disable continue button",
+		"description": "Disable continue button menu item"
+	},
+	"cm_maxDiff": {
+		"message": "Max Diff",
+		"description": "Max Diff menu item"
+	},
+	"cm_colFix": {
+		"message": "Col Fix - Declaration",
+		"description": "Col Fix - Declaration menu item"
+	},
+	"cm_colFixCopy": {
+		"message": "Col Fix - Call",
+		"description": "Col Fix - Call menu item"
+	},
+	"sidebar": {
+		"message": "Sidebar",
+		"description": "Sidebar"
+	},
+	"options": {
+		"message": "Options",
+		"description": "Options"
+	}
+}

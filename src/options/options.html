@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="UTF-8">
+
+	<script src="../../res/jQ/jquery-3.1.0.min.js"></script>
+	<script src="../../res/jQ-UI/jquery-ui.min.js"></script>
+	
+	<link rel="stylesheet" href="../../res/jQ-UI/jquery-ui.min.light.css">
+	<link rel="stylesheet" href="../../res/jQ-UI/jquery-ui.structure.min.light.css">
+	<link rel="stylesheet" href="../../res/jQ-UI/jquery-ui.theme.min.light.css">
+	<link rel="stylesheet" href="../../res/jQ-UI/jquery-ui.min.dark.css">
+	<link rel="stylesheet" href="../../res/jQ-UI/jquery-ui.structure.min.dark.css">
+	<link rel="stylesheet" href="../../res/jQ-UI/jquery-ui.theme.min.dark.css">
+
+	<link rel="stylesheet" href="options.css">
+	<script src="options.js"></script>
+	</head>
+	<body>
+	<div class="prefs-wrapper clearfix">
+		<div class="prefs-sub-wrapper prefs-checks-wrapper">		
+			<input type="checkbox" name="useClipboard" id="useClipboard" value="1"/>
+			<label for="useClipboard" class="set-corner-top">Use Clipboard</label>
+			<input type="checkbox" name="topContext" id="topContext" value="1"/>
+			<label for="topContext">Add-on context menu on top</label>
+			<input type="checkbox" name="cleanLines" id="cleanLines" value="1"/>
+			<label for="cleanLines">Clean element labels from lines</label>
+			<input type="checkbox" name="globalUse" id="globalUse" value="1"/>
+			<label for="globalUse" class="set-corner-bottom">Show context menu on all pages</label>
+		</div>
+		<div class="prefs-sub-wrapper prefs-language-wrapper">
+			<div class="ui-controlgroup-label commentsLang-label set-corner-top">
+				Question comments
+			</div>
+			<input type="radio" name="commentsLang" id="clen" value="en"/>
+			<label for="clen">English</label>
+			<input type="radio" name="commentsLang" id="clde" value="de"/>
+			<label for="clde" class="set-corner-bottom">German</label>
+		</div>
+		<div class="prefs-sub-wrapper prefs-theme-wrapper">
+			<div class="ui-controlgroup-label commentsLang-label set-corner-top">
+				Theme
+			</div>
+			<input type="radio" name="theme" id="th_light" value="light"/>
+			<label for="th_light">Light</label>
+			<input type="radio" name="theme" id="th_dark" value="dark"/>
+			<label for="th_dark" class="set-corner-bottom">Dark</label>
+		</div>
+	</div>
+	</body>
+</html>

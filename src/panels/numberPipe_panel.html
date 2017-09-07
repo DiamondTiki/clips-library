@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		
+		<script src="../../res/jQ/jquery-3.1.0.min.js"></script>
+		<script src="../../res/jQ-UI/jquery-ui.min.js"></script>
+		<link rel="stylesheet" href="../../res/jQ-UI/jquery-ui.min.light.css">
+		<link rel="stylesheet" href="../../res/jQ-UI/jquery-ui.structure.min.light.css">
+		<link rel="stylesheet" href="../../res/jQ-UI/jquery-ui.theme.min.light.css">
+		<link rel="stylesheet" href="../../res/jQ-UI/jquery-ui.min.dark.css">
+		<link rel="stylesheet" href="../../res/jQ-UI/jquery-ui.structure.min.dark.css">
+		<link rel="stylesheet" href="../../res/jQ-UI/jquery-ui.theme.min.dark.css">
+		
+		<link rel="stylesheet" href="panel.css">
+		<script src="panel.js"></script>
+		<script src="numberPipe_panel.js"></script>
+
+	</head>
+
+	<body class="ui-theme-light numberPipe-panel" data-panel="numberPipe">
+		<div class="ctrlg-wrapper hor">
+			<label for="qLabel" class="ui-controlgroup-label">
+				Question label
+				<input type="text" size="3" name="qLabel" id="qLabel" />
+			</label>
+						
+			<button class="qtype-button" data-qtype="single">Single-column</button>
+			<button class="qtype-button" data-qtype="multi">Multi-column</button>
+		</div>
+	</body>
+</html>

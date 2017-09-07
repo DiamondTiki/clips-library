@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		
+		<script src="../../res/jQ/jquery-3.1.0.min.js"></script>
+		<script src="../../res/jQ-UI/jquery-ui.min.js"></script>
+		<link rel="stylesheet" href="../../res/jQ-UI/jquery-ui.min.light.css">
+		<link rel="stylesheet" href="../../res/jQ-UI/jquery-ui.structure.min.light.css">
+		<link rel="stylesheet" href="../../res/jQ-UI/jquery-ui.theme.min.light.css">
+		<link rel="stylesheet" href="../../res/jQ-UI/jquery-ui.min.dark.css">
+		<link rel="stylesheet" href="../../res/jQ-UI/jquery-ui.structure.min.dark.css">
+		<link rel="stylesheet" href="../../res/jQ-UI/jquery-ui.theme.min.dark.css">
+		
+		<link rel="stylesheet" href="panel.css">
+		<script src="panel.js"></script>
+		<script src="popups_panel.js"></script>
+
+	</head>
+
+	<body class="ui-theme-light popups-panel" data-panel="popups">
+		<div class="type-wrapper">
+			<div class="ctrlg-wrapper hor noicons">
+				<input type="radio" name="codeType" value="popup" id="codeType_popup" checked="checked" />
+				<label for="codeType_popup">Popup</label>
+				<input type="radio" name="codeType" value="tooltip" id="codeType_tooltip" />
+				<label for="codeType_tooltip">Tooltip</label>
+			</div>
+		</div>
+		<div class="popup-attr popup-size-wrapper">
+			<div class="ctrlg-wrapper hor code-text popup-size">
+				<label class="ui-controlgroup-label set-corner-none" for="popupWidth">Width</label>
+				<input class="ui-controlgroup-item" type="text" size="4" name="popupWidth" id="popupWidth" />
+				<label class="ui-controlgroup-label set-corner-none" for="popupHeight">Height</label>
+				<input class="ui-controlgroup-item" type="text" size="4" name="popupHeight" id="popupHeight" />				
+			</div>
+		</div>
+		<div class="popup-attr popup-title-wrapper">
+			<div class="ctrlg-wrapper hor code-text popup-title">
+				<label class="ui-controlgroup-label set-corner-none" for="popupTitle">Title</label>
+				<input class="ui-controlgroup-item" type="text" size="29" name="popupTitle" id="popupTitle" />					
+			</div>
+		</div>
+		
+		<div class="code-wrapper">
+			<table class="code-table">
+				<tr>
+					<td class="base-cell">
+						<div class="ctrlg-wrapper vert code-label">
+							<div class="ui-controlgroup-label set-corner-top">
+								Base
+							</div>
+						</div>
+						<div class="ctrlg-wrapper hor noicons code-radio children-set-corner-none">
+							<input type="radio" name="baseType" value="text" id="baseType_text" checked="checked" />
+							<label for="baseType_text">Text/HTML</label>
+							<input type="radio" name="baseType" value="image" id="baseType_image" />
+							<label for="baseType_image">Image name</label>
+						</div>
+						<div class="ta-wrapper">
+							<textarea rows="7" name="baseInput"></textarea>
+						</div>
+					</td>
+					<td class="content-cell">
+						<div class="ctrlg-wrapper vert code-label">
+							<div class="ui-controlgroup-label set-corner-top">
+								Content
+							</div>
+						</div>
+						<div class="ctrlg-wrapper hor noicons code-radio children-set-corner-none">
+							<input type="radio" name="contentType" value="text" id="contentType_text" checked="checked" />
+							<label for="contentType_text">Text/HTML</label>
+							<input type="radio" name="contentType" value="image" id="contentType_image" />
+							<label for="contentType_image">Image name</label>
+						</div>
+						<div class="ta-wrapper">
+							<textarea rows="7" name="contentInput"></textarea>
+						</div>						
+					</td>
+				</tr>
+			</table>
+		</div>
+		
+		<div class="exec-wrapper">
+			<button class="exec-button lone-button">Place</button>
+		</div>	
+	</body>
+</html>

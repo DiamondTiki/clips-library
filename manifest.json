@@ -1,0 +1,45 @@
+{
+  "name": "Clips Library",
+  "version": "0.0.4",
+  "manifest_version": 2,
+  "description": "Add-on for use with FocusVision's Decipher® survey platform's XML Editor. Provides similar functionality to the Decipher library for Fookes Software's Notetab® directly in the XML Editor.\n\n Decipher is a registered trademark of FocusVision Worldwide, Inc. in the United States and/or other countries. Notetab is a registered trademark of Fookes Software Ltd in the United States and/or other countries. This software is not affiliated with or endorsed by FocusVision Worldwide, Inc. or Fookes Software Ltd.",
+  "icons": {
+    "16": "res/i/icon_16.png",
+    "48": "res/i/icon_48.png",
+    "128": "res/i/icon_128.png"
+  },
+  "default_locale": "en",
+  "background": {
+    "scripts": [
+	  "res/jQ/jquery-3.1.0.min.js",
+      "src/bg/background.js"  
+    ]
+  },
+  "options_ui": {
+    "page": "src/options/options.html",
+	"browser_style": true
+  },
+  "permissions": [
+	"activeTab",
+    "clipboardRead",
+    "contextMenus",
+	"storage"
+  ],
+  "sidebar_action": {
+	"default_icon": {
+		"16": "res/i/icon_16.png",
+		"32": "res/i/icon_32.png"
+	},
+	"default_panel": "src/sidebar/sidebar.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "src/content/selection.js"
+      ]
+    }
+  ]
+}
