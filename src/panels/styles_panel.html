@@ -18,118 +18,134 @@
 	</head>
 
 	<body class="ui-theme-light styles-panel" data-panel="styles">
-
-		<div class="accordion-wrapper">
-		
-			<h3 class="accordion-header">Survey Styles</h3>
-			<div class="accordion-item survey-item">
-				<div class="ctrlg-wrapper vert">
-					<div class="ui-controlgroup-label">
-						Page styles
+		<div class="tabs-wrapper">
+			<ul>
+				<li><a href="#tabs-basic">Basic styles</a></li>
+				<li><a href="#tabs-special">Special styles</a></li>
+			</ul>
+			<div id="tabs-basic" class="tab">
+				<div class="accordion-wrapper">		
+					<h3 class="accordion-header">Survey Styles</h3>
+					<div class="accordion-item survey-item">
+						<div class="ctrlg-wrapper vert">
+							<div class="ui-controlgroup-label">
+								Page styles
+							</div>
+							<button>survey.header</button>
+							<button>survey.logo</button>
+							<button>survey.completion</button>
+							<button>survey.respview.footer</button>
+							<button>survey.respview.footer.support</button>
+						</div>	
+						<div class="ctrlg-wrapper vert">
+							<div class="ui-controlgroup-label">
+								Buttons styles
+							</div>
+							<button>buttons</button>
+							<button>button.continue</button>
+							<button>button.finish</button>
+							<button>button.cancel</button>
+						</div>			
 					</div>
-					<button>survey.header</button>
-					<button>survey.logo</button>
-					<button>survey.completion</button>
-					<button>survey.respview.footer</button>
-					<button>survey.respview.footer.support</button>
-				</div>	
-				<div class="ctrlg-wrapper vert">
-					<div class="ui-controlgroup-label">
-						Buttons styles
+					
+					<h3 class="accordion-header">Question Styles</h3>
+					<div class="accordion-item">
+						<div class="ctrlg-wrapper vert">
+							<button>question.header</button>
+							<button>survey.question</button>
+							<button>survey.question.instructions</button>
+							<button>survey.question.answers.start</button>
+							<button>survey.question.answers.end</button>
+							<button>question.footer</button>
+						</div>			
 					</div>
-					<button>buttons</button>
-					<button>button.continue</button>
-					<button>button.finish</button>
-					<button>button.cancel</button>
-				</div>			
-			</div>
-			
-			<h3 class="accordion-header">Question Styles</h3>
-			<div class="accordion-item">
-				<div class="ctrlg-wrapper vert">
-					<button>question.header</button>
-					<button>survey.question</button>
-					<button>survey.question.instructions</button>
-					<button>survey.question.answers.start</button>
-					<button>survey.question.answers.end</button>
-					<button>question.footer</button>
-				</div>			
-			</div>
-			
-			<h3 class="accordion-header">Answers Styles - Cols</h3>
-			<div class="accordion-item answers-item">
-				<div class="ctrlg-wrapper vert">
-					<div class="ui-controlgroup-label">
-						Column legend rows
+					
+					<h3 class="accordion-header">Answers Styles - Cols</h3>
+					<div class="accordion-item answers-item">
+						<div class="ctrlg-wrapper vert">
+							<div class="ui-controlgroup-label">
+								Column legend rows
+							</div>
+							<button>question.group-column</button>
+							<button>question.top-legend</button>
+							<button>question.group</button>
+							<button>question.col-legend-row</button>
+							<button>question.bottom-legend</button>
+						</div>
+						<div class="ctrlg-wrapper vert">
+							<div class="ui-controlgroup-label">
+								Column legend items
+							</div>
+							<button>question.group-column-cell</button>
+							<button>question.left-blank-legend</button>
+							<button>question.top-legend-item</button>
+							<button>question.right-blank-legend</button>
+							<button>question.col-legend-row-item</button>
+							<button>question.bottom-legend-item</button>
+						</div>
 					</div>
-					<button>question.group-column</button>
-					<button>question.top-legend</button>
-					<button>question.group</button>
-					<button>question.col-legend-row</button>
-					<button>question.bottom-legend</button>
+					
+					<h3 class="accordion-header">Answers Styles - Rows</h3>
+					<div class="accordion-item answers-item">
+						<div class="ctrlg-wrapper vert">
+							<div class="ui-controlgroup-label">
+								Row styles
+							</div>
+							<button>question.row</button>
+							<button>question.na.row</button>
+							<button>question.left</button>
+							<button>question.right</button>
+							<button>question.element</button>
+						</div>
+					</div>
+					
+					<h3 class="accordion-header">Element Styles</h3>
+					<div class="accordion-item element-styles">
+						<div class="ctrlg-wrapper vert">
+							<div class="ui-controlgroup-label">
+								Input/textarea styles
+							</div>
+							<button>el.radio</button>
+							<button>el.checkbox</button>
+							<button>el.text</button>
+							<button>el.textarea</button>
+							<button>el.open</button>
+							<button>el.noanswer</button>
+						</div>
+						<div class="ctrlg-wrapper vert">
+							<div class="ui-controlgroup-label">
+								Select styles
+							</div>
+							<button>el.select.header</button>
+							<button>el.select.default</button>
+							<button>el.select.element</button>
+							<button>el.select.footer</button>
+						</div>
+					</div>
 				</div>
-				<div class="ctrlg-wrapper vert">
+		
+				<div class="ctrlg-wrapper hor mode-wrapper">
 					<div class="ui-controlgroup-label">
-						Column legend items
+						Mode
 					</div>
-					<button>question.group-column-cell</button>
-					<button>question.left-blank-legend</button>
-					<button>question.top-legend-item</button>
-					<button>question.right-blank-legend</button>
-					<button>question.col-legend-row-item</button>
-					<button>question.bottom-legend-item</button>
-				</div>				
-			</div>
-			
-			<h3 class="accordion-header">Answers Styles - Rows</h3>
-			<div class="accordion-item answers-item">
-				<div class="ctrlg-wrapper vert">
-					<div class="ui-controlgroup-label">
-						Row styles
-					</div>
-					<button>question.row</button>
-					<button>question.na.row</button>
-					<button>question.left</button>
-					<button>question.right</button>
-					<button>question.element</button>
-				</div>				
-			</div>
-			
-			<h3 class="accordion-header">Element Styles</h3>
-			<div class="accordion-item element-styles">
-				<div class="ctrlg-wrapper">
-					<div class="ui-controlgroup-label">
-						Input/textarea styles
-					</div>
-					<button>el.radio</button>
-					<button>el.checkbox</button>
-					<button>el.text</button>
-					<button>el.textarea</button>
-					<button>el.open</button>
-					<button>el.noanswer</button>
-				</div>	
-				<div class="ctrlg-wrapper">
-					<div class="ui-controlgroup-label">
-						Select styles
-					</div>
-					<button>el.select.header</button>
-					<button>el.select.default</button>
-					<button>el.select.element</button>
-					<button>el.select.footer</button>
+					<input type="radio" name="styleMode" value="before" id="modeBefore" />
+					<label for="modeBefore">Before</label>
+					<input type="radio" name="styleMode" value="instead" id="modeInstead" />
+					<label for="modeInstead">Instead</label>
+					<input type="radio" name="styleMode" value="after" id="modeAfter" />
+					<label for="modeAfter">After</label>
 				</div>	
 			</div>
-		</div>
-
-		<div class="ctrlg-wrapper hor mode-wrapper">
-			<div class="ui-controlgroup-label">
-				Mode
+			<div id="tabs-special" class="tab">
+				<div class="ctrlg-wrapper vert">
+					<div class="ui-controlgroup-label">
+						Special styles
+					</div>
+					<button>global.page.head</button>
+					<button>page.head</button>
+					<button>question.after</button>
+					<button>button.cancel</button>
+				</div>	
 			</div>
-			<input type="radio" name="styleMode" value="before" id="modeBefore" />
-			<label for="modeBefore">Before</label>
-			<input type="radio" name="styleMode" value="instead" id="modeInstead" />
-			<label for="modeInstead">Instead</label>
-			<input type="radio" name="styleMode" value="after" id="modeAfter" />
-			<label for="modeAfter">After</label>
-		</div>	
 	</body>
 </html>

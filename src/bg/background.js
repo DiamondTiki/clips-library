@@ -619,7 +619,24 @@ var clips = {
 		return qText;
 	},
 	makeUsStatesRegions: function(selectedText) {
-		var recodeText = "\n\n<exec>\nif %s.ival in [30,32,38,6,19,21,29,39,45]:\n    hRegion.val = 0\nelif %s.ival in [13,14,22,35,49,15,16,23,25,34,27,41]:\n    hRegion.val = 1\nelif %s.any and %s.ival in [0,17,24,42,8,7,9,10,20,33,40,46,48,3,18,36,43]:\n    hRegion.val = 2\nelif %s.ival in [2,5,12,26,31,28,44,50,1,4,11,37,47]:\n    hRegion.val = 3\n</exec>\n\n<radio label=\"hRegion\" optional=\"1\" where=\"execute\" sst=\"0\">\n  <title>Hidden Question: Region recode</title>\n  <row label=\"r1\">Northeast (ME, NH, VT, MA, RI, CT, NY, NJ, PA)</row>\n  <row label=\"r2\">Midwest (WI, IL, MI, IN, OH, ND, SD, NE, KS, MN, IA, MO)</row>\n  <row label=\"r3\">South (KY, TN, MS, AL, FL, GA, SC, NC, VA, WV, DC, MD, DE, TX, OK, AR, LA)</row>\n  <row label=\"r4\">West (MT, ID, WY, NV, UT, CO, AZ, NM, WA, OR, CA, AK, HI)</row>\n</radio>\n\n<suspend/>";
+		var recodeText = "\n\n"
+			+"<exec>\n"
+			+ "if %s.ival in [30,32,38,6,19,21,29,39,45]:\n"
+			+ "	hRegion.val = 0\n" 
+			+ "elif %s.ival in [13,14,22,35,49,15,16,23,25,34,27,41]:\n"
+			+ "    hRegion.val = 1\n"
+			+ "elif %s.any and %s.ival in [0,17,24,42,8,7,9,10,20,33,40,46,48,3,18,36,43]:\n" 
+			+ "    hRegion.val = 2\nelif %s.ival in [2,5,12,26,31,28,44,50,1,4,11,37,47]:\n" 
+			+ "    hRegion.val = 3\n"
+			+ "</exec>\n\n"
+			+ "<radio label=\"hRegion\" optional=\"1\" where=\"execute\" sst=\"0\">\n"
+			+ "  <title>Hidden Question: Region recode</title>\n"
+			+ "  <row label=\"r1\">Northeast (ME, NH, VT, MA, RI, CT, NY, NJ, PA)</row>\n"
+			+ "  <row label=\"r2\">Midwest (WI, IL, MI, IN, OH, ND, SD, NE, KS, MN, IA, MO)</row>\n"
+			+ "  <row label=\"r3\">South (KY, TN, MS, AL, FL, GA, SC, NC, VA, WV, DC, MD, DE, TX, OK, AR, LA)</row>\n"
+			+ "  <row label=\"r4\">West (MT, ID, WY, NV, UT, CO, AZ, NM, WA, OR, CA, AK, HI)</row>\n"
+			+ "</radio>\n\n"
+			+ "<suspend/>";
 		
 		var qText = clips.makeUsStates(selectedText);
 		var qLabel = /label="([^"]+)"/.exec(qText)[1];
@@ -1310,7 +1327,13 @@ var clips = {
 	newStyleBeforeAfter: function(styleObj) {
 		return '<style name="' + styleObj.style + '" mode="' + styleObj.mode + '"><![CDATA[\n' +
 				'\n' +
-				']]></style>'
+				']]></style>';
+	},
+	
+	newStyleSpecial: function(styleName) {
+		return '<style name="' + styleName + '"><![CDATA[\n' +
+				'\n' +
+				']]></style>';
 	}
 };
 
@@ -1836,7 +1859,7 @@ function replaceTabText(_tabId, _cmId) {
 
 function openPanel(whichPanel = "styles") {
 	var panelSizes = {
-		"styles": {width: 700, height: 650},
+		"styles": {width: 750, height: 740},
 		"popups": {width: 700, height: 650},
 	}
 	
@@ -1899,15 +1922,28 @@ function cmListener(cmdata, tab) {
 }
 
 // Runtime listener
-function rtListener(message, tab) {
+function rtListener(message, tab, sendResponse) {
+	console.log("Runtime message received:");
+	console.log(message);
+	
+	// Styles panel command info request
+	if (message.type === "panel-command-info-request") {
+		sendResponse(helpers.panelCommandInfo)
+	}
+	
 	// Styles panel handler section
 	if (message.type === "style-selection") {
 
 		var commandInfo = message.commandInfo;
 		var selectedStyle = message.style;
 		var styleMode = message.mode;
+		var styleType = message.styleType;
 		
-		var processedText = styleMode === "instead" ? clips.newStyleInstead(selectedStyle) : clips.newStyleBeforeAfter(message);
+		if (styleType == "special") {
+			var processedText = clips.newStyleSpecial(selectedStyle);
+		} else {
+			var processedText = styleMode === "instead" ? clips.newStyleInstead(selectedStyle) : clips.newStyleBeforeAfter(message);
+		}
 		
 		setTabText(commandInfo.tabId, processedText);		
 	}

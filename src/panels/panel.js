@@ -1,5 +1,4 @@
-var background = browser.extension.getBackgroundPage();
-var commandInfo = background.helpers.panelCommandInfo;
+var commandInfo = null;
 
 $(function() {
 	// General setup
@@ -23,7 +22,24 @@ $(function() {
 		heightStyle: "auto"
 	});
 	
+	$(".tabs-wrapper").tabs();
+	
 	$ ("button.lone-button").button();
+	
+	// Disable the controlgroups while we get the tabid from the background page
+	$(".ctrlg-wrapper").each(function() {$ (this).controlgroup("disable")});
+	
+	// Getting the target tabid for eventual text insertion
+	// Once gotten, re-enable control groups
+	var gettingCommandInfo = browser.runtime.sendMessage({
+		type: "panel-command-info-request"
+	}).then((response) => {
+		commandInfo = response;
+		$(".ctrlg-wrapper").each(function() {$ (this).controlgroup("enable")});
+	},(reason) => {
+		console.log("Failed getting panel command info (tab id) from background");
+		console.log(reason);
+	});
 
 	$(".set-corner-bottom").switchClass("ui-corner-top ui-corner-left ui-corner-right ui-corner-all ui-corner-tl ui-corner-tr ui-corner-bl ui-corner-br", "ui-corner-bottom");
 	$(".set-corner-all").switchClass("ui-corner-top ui-corner-bottom ui-corner-left ui-corner-right ui-corner-tl ui-corner-tr ui-corner-bl ui-corner-br", "ui-corner-all");
@@ -44,13 +60,18 @@ $(function() {
 		$(document).on("click",".styles-panel button",function() {
 			console.log("clicked a style button");
 			let thisStyle = $(this).text();
+			let thisStyleType = $(this).closest(".tab").is("#tabs-special") ? "special" : "basic";
 			browser.runtime.sendMessage({
 				type: "style-selection", 
+				styleType: thisStyleType,
 				style: thisStyle,
 				mode: styleMode,
-				commandInfo: commandInfo
+				commandInfo: commandInfo,
+				
 			});
+			
 			browser.tabs.getCurrent().then(thisTab => {
+				console.log("thisTab", thisTab);
 				var closing = browser.tabs.remove(thisTab.id);
 			}, reason => {
 				console.log("Failed getting current tab");
