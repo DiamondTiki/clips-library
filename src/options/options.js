@@ -9,16 +9,9 @@ $(function() {
 	$(".children-set-corner-all").children().switchClass("ui-corner-top ui-corner-bottom ui-corner-left ui-corner-right ui-corner-tl ui-corner-tr ui-corner-bl ui-corner-br", "ui-corner-all");
 	$(".set-corner-top").switchClass("ui-corner-bottom ui-corner-left ui-corner-right ui-corner-all ui-corner-tl ui-corner-tr ui-corner-bl ui-corner-br", "ui-corner-top");
 
-	var storage = browser.storage.local;	
+	var storage = browser.storage.local;
 	
-	// List of all jQuery UI custom class namespaced themes the extension supports
-	var themes = ["ui-theme-light", "ui-theme-dark"];
-	
-	var defaultOptions;
-	
-
-	
-	var currentOptions;
+	var defaultOptions, currentOptions, themes;
 	
 	var refreshTheme = function(newClass) {
 		$ ("body").removeClass( themes.join(" ") ).addClass(newClass);
@@ -29,14 +22,14 @@ $(function() {
 		console.log(err)
 	}
 
-	// Disable the controlgroups while we get the tabid from the background page
+	// Disable the controlgroups while we get the options from the background page
 	$(".prefs-sub-wrapper").each(function() {$ (this).controlgroup("disable")});
 	
 	var gettingOptions = browser.runtime.sendMessage({
 		type: "options-info-request"
 	}).then((response) => {
-		defaultOptions = response;
-		$(".prefs-sub-wrapper").each(function() {$ (this).controlgroup("enable")});
+		defaultOptions = response.defaultOptions;
+		themes = response.themes;		
 		
 		return storage.get({options: defaultOptions});
 	},(reason) => {
@@ -45,7 +38,10 @@ $(function() {
 	}).then((response) => {
 		currentOptions = response.options;
 		
+		
 		refreshTheme("ui-theme-" + currentOptions.theme);
+		
+		$(".prefs-sub-wrapper").each(function() {$ (this).controlgroup("enable")});
 		
 		$ (".prefs-wrapper").find("input").each(function() {
 			if ($ (this).is(":checkbox")) {
@@ -54,6 +50,8 @@ $(function() {
 				$ (this).prop("checked", true).change();
 			}
 		});
+		
+		
 		
 		$ (".prefs-wrapper").on("change", "input", function() {
 			var hasChange = false;

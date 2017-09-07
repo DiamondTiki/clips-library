@@ -11,6 +11,9 @@ var helpers = {
 			theme: "light"
 	},
 	
+	// List of supported themes
+	themes: ["ui-theme-light", "ui-theme-dark"],
+	
 	// Retrieve options from storage, use defaultOptions for any option not in storage
 	refreshOptions: function() {
 		let tries = 0;
@@ -2045,7 +2048,10 @@ function rtListener(message, tab, sendResponse) {
 			break;
 		
 		case "options-info-request":
-			sendResponse(helpers.defaultOptions);
+			sendResponse({
+				defaultOptions: helpers.defaultOptions,
+				themes: helpers.themes
+			});
 			break;
 		
 		// Styles panel handler section

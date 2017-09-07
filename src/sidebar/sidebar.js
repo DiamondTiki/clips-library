@@ -21,6 +21,28 @@ $(function() {
 	
 	var background = browser.extension.getBackgroundPage();
 	
+	var defaultOptions = background.helpers.defaultOptions;
+	
+	var themes = background.helpers.themes;
+	
+	var refreshTheme = function() {
+		var gettingOptions = storage.get({options: defaultOptions}).then((response) => {
+			currentOptions = response.options;			
+			refreshTheme(".ui-theme"+currentOptions.theme);
+			$ ("body")
+				.removeClass( themes.join(" ") )
+				.addClass("ui-theme-"+currentOptions.theme);
+		});		
+	}
+	
+	var currentOptions;
+	
+	var storage = browser.storage.local;
+	
+	refreshTheme();
+	
+	browser.storage.onChanged.addListener(refreshTheme);
+	
 	var gettingActiveTab = browser.tabs.query({
 		active: true,
 		currentWindow: true
