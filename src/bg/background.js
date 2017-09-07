@@ -510,7 +510,7 @@ var clips = {
 			arr[i] = item.replace(/(label=")(\w+)(?=")/, '$1' + newLabel);
 		});
 		
-		return lines.join("\n");
+		return "  "+lines.join("\n");
 	},
 	
 	swapRowCol: function(selText="") {
@@ -1915,11 +1915,11 @@ function replaceTabText(_tabId, _cmId) {
 				break;
 			
 			case "makeTag_spanClass":
-				newText = clips.makeTag(selectedText,tagName="span",false,tagAttrs = ["class"]);
+				newText = clips.makeTag(selectedText,tagName="span",fOptions={newRowContent:false,tagAttrs:["class"]});
 				break;
 			
 			case "makeTag_spanStyle":
-				newText = clips.makeTag(selectedText,tagName="span",false,tagAttrs = ["style"]);
+				newText = clips.makeTag(selectedText,tagName="span",fOptions={newRowContent:false,tagAttrs:["style"]});
 				break;
 			
 			//Attributes
