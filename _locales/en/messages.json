@@ -268,7 +268,7 @@
 		"description": "Add decrementing values to tags menu item"
 	},
 	"cm_miscMenu": {
-		"message": "Miscellaneous Clips",
+		"message": "Miscellaneous Clips (main)",
 		"description": "Misc clips menu text"
 	},
 	"cm_relabelElements": {
@@ -311,17 +311,93 @@
 		"message": "Add popup/tooltip",
 		"description": "Add popup/tooltip menu item"
 	},
+	"cm_addPopupTemplate": {
+		"message": "Add popup (template)",
+		"description": "Add popup (template) menu item"
+	},
+	"cm_addTooltipTemplate": {
+		"message": "Add tooltip (template)",
+		"description": "Add tooltip (template) menu item"
+	},
+	"cm_rowOrderVirtual": {
+		"message": "Shuffle Rows Virtual",
+		"description": "Shuffle Rows Virtual menu item"
+	},
+	"cm_childOrderBlock": {
+		"message": "Random Order Tracker - Block",
+		"description": "Random Order Tracker - Block menu button"
+	},
+	"cm_childOrderLoop": {
+		"message": "Random Order Tracker - Loop",
+		"description": "Random Order Tracker - Loop menu button"
+	},
+	"cm_dupeCheckVar": {
+		"message": "Dupe check by variable",
+		"description": "Dupe check by variable menu button"
+	},
 	"cm_xmlMenu": {
 		"message": "XML Styles",
 		"description": "XML styles clips menu text"
 	},
 	"cm_addStyleBlank": {
-		"message": "Add Style (blank)",
+		"message": "New Style (blank)",
 		"description": "Add blank style tag menu item"
 	},
 	"cm_newStyleInstead": {
 		"message": "New Style",
 		"description": "Add new style tag (mode=instead) menu item"
+	},
+	"cm_addStyleLabel": {
+		"message": "New Style (with label)",
+		"description": "New Style (with label) menu item"
+	},
+	"cm_addStyleCopy": {
+		"message": "Style call/copy",
+		"description": "Style call/copy menu item"
+	},
+	"cm_surveyCss": {
+		"message": "Survey-wide CSS",
+		"description": "Survey-wide CSS menu item"
+	},
+	"cm_surveyJs": {
+		"message": "Survey-wide JS",
+		"description": "Survey-wide JS menu item"
+	},
+	"cm_questionCss": {
+		"message": "Question-specific CSS",
+		"description": "Question-specific CSS menu item"
+	},
+	"cm_questionJs": {
+		"message": "Question-specific JS (after question)",
+		"description": "Question-specific JS (after question) menu item"
+	},
+	"cm_questionJsHead": {
+		"message": "Question-specific JS (in <head>)",
+		"description": "Question-specific JS (in <head>) menu item"
+	},
+	"cm_leftBlankLegend": {
+		"message": "Left-blank-legend",
+		"description": "Left-blank-legend menu item"
+	},
+	"cm_numberPipe": {
+		"message": "Pipe number question in table",
+		"description": "Add number question pipe style menu item"
+	},
+	"cm_disableContinue": {
+		"message": "Disable continue button",
+		"description": "Disable continue button menu item"
+	},
+	"cm_maxDiff": {
+		"message": "Max Diff",
+		"description": "Max Diff menu item"
+	},
+	"cm_colFix": {
+		"message": "Col Fix - Declaration",
+		"description": "Col Fix - Declaration menu item"
+	},
+	"cm_colFixCopy": {
+		"message": "Col Fix - Call",
+		"description": "Col Fix - Call menu item"
 	},
 	"sidebar": {
 		"message": "Sidebar",

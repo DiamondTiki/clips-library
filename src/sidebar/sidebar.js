@@ -13,6 +13,8 @@ $(function() {
 		icons: {primary: "ui-icon-gear"},
 	});
 	
+	$(".tabs-wrapper").tabs();
+	
 	$("#prefsButton").click(function() {
 		var openingOptions = browser.runtime.openOptionsPage();
 	});
@@ -27,20 +29,21 @@ $(function() {
 		var tabId = activeTab.id;
 		
 		$(document).on("click",".clips-list button",function() {
-			let clipCommand = $(this).data("clip");
+			let cmId = $(this).data("clip");
 			
-
-			if (clipCommand == "newStyle") {
-				browser.windows.getCurrent().then(thisWindow => {
-					return browser.tabs.query({windowId: thisWindow.id, active: true}) ;
-				}).then( queryTabs => {
-					background.helpers.panelCommandInfo = {
-						tabId: queryTabs[0].id
-					};
-					background.openPanel("styles");
-				}).catch(reason => {console.log(reason)});			
+			if ( cmId.indexOf("panel-") !== -1 ) {
+				background.helpers.panelCommandInfo = {
+					tabId: tabId
+				};
+				
+				var panelSelector = cmId.split("-")[1];
+				
+				if (panelSelector == "textInput")
+					background.helpers.panelCommandInfo.panelSubtype = cmId.split("-")[2];
+				
+				background.openPanel(panelSelector);
 			} else {
-				background.replaceTabText(tabId, clipCommand);
+				background.replaceTabText(tabId, cmId);
 			}
 		});
 	})

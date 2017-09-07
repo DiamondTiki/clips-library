@@ -4,6 +4,14 @@ body {
 	font-size: 12px;
 }
 
+.ui-tabs .ui-tabs-panel {
+	padding: 0.25em !important;
+}
+
+.ui-accordion .ui-accordion-content {
+	padding: 0.25em !important;
+}
+
 .ui-controlgroup {
 	display: inline-block;
 	text-align: center;

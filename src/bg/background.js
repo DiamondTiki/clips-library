@@ -98,19 +98,19 @@ var questionComments = {
 // Non-panel clips - Notetab clip ports
 var clips = {
 	//Control Elements
-	makeTerm: function(selText) {
+	makeTerm: function(selText="") {
 		var input = helpers.processInput(selText);		
 		return '<term cond="'+input+'"></term>';
 	},
-	makeQuota: function(selText) {
+	makeQuota: function(selText="") {
 		var input = helpers.processInput(selText);
 		return '<quota sheet="'+input+'" overquota="noqual"/>';
 	},
-	makeValidate: function(selText) {
+	makeValidate: function(selText="") {
 		var input = helpers.processInput(selText);
 		return '  <validate>\n'+input+'\n  </validate>';
 	},
-	makeResource: function(selText) {
+	makeResource: function(selText="") {
 		var input = helpers.processInput(selText);
 		var lines = helpers.makeLines(input);
 		
@@ -128,11 +128,11 @@ var clips = {
 		
 		return output;
 	},
-	makeExec: function(selText) {
+	makeExec: function(selText="") {
 		var input = helpers.processInput(selText);
 		return '<exec>\n'+input+'\n</exec>';
 	},
-	makeBlock: function(selText) {
+	makeBlock: function(selText="") {
 		var input = helpers.processInput(selText);
 		
 		var lines = helpers.makeLines(input, {skipClean: true});
@@ -145,7 +145,7 @@ var clips = {
 		
 		return '<block label="" cond="1">\n'+input+'\n</block>';
 	},
-	makeBlockChildren: function(selText) {
+	makeBlockChildren: function(selText="") {
 		var input = helpers.processInput(selText);
 		
 		var lines = helpers.makeLines(input, {skipClean: true});
@@ -158,7 +158,7 @@ var clips = {
 		
 		return '<block label="" cond="1" randomizeChildren="1">\n'+input+'\n</block>';
 	},
-	makeLoop: function(selText) {
+	makeLoop: function(selText="") {
 		var input = helpers.processInput(selText);
 		input = input.replace(/<(radio|checkbox|text|textarea|block|number|float|select|html|autofill)([.\r\n]*?label=")([^"]*)"/g, '<$1$2$3_[loopvar: label]"');
 		
@@ -180,11 +180,11 @@ var clips = {
 						'</loop>';
 		return output;
 	},
-	makeMarker: function(selText) {
+	makeMarker: function(selText="") {
 		var input = helpers.processInput(selText);
 		return '<marker name="'+input+'" cond=""/>';
 	},
-	makeCondition: function(selText) {
+	makeCondition: function(selText="") {
 		var input = helpers.processInput(selText);
 		return '<condition label="" cond="">'+input+'</condition>';
 	},
@@ -299,12 +299,12 @@ var clips = {
 		return output;
 	},
 	
-	makeSurveyComment: function(selText) {
+	makeSurveyComment: function(selText="") {
 		var input = helpers.processInput(selText);
 		return '<html label="" where="survey">'+input+'</html>';
 	},
 	
-	makeAutofill: function(selText) {
+	makeAutofill: function(selText="") {
 		var input = helpers.processInput(selText);
 		
 		return 	'<autofill label="" where="execute,survey,report">\n' +
@@ -352,7 +352,7 @@ var clips = {
 		
 		return output;
 	},
-	makeNoAnswer: function(selText) {
+	makeNoAnswer: function(selText="") {
 		var input = helpers.processInput(selText);
 		var lines = helpers.makeLines(input);
 		
@@ -371,13 +371,13 @@ var clips = {
 		
 		return output;
 	},
-	makeQuestionComment: function(selText) {
+	makeQuestionComment: function(selText="") {
 		var input = helpers.processInput(selText);
 		return '  <comment>'+input+'</comment>';
 	},
 	
 	//Text formatting
-	makeTag: function(selText,tagName,fOptions=null) {
+	makeTag: function(selText="",tagName="span",fOptions=null) {
 		let _options = {newRowContent:false,tagAttrs: []};
 		if (typeof fOptions !== null) $.extend(_options, fOptions);
 		var input = helpers.processInput(selText);
@@ -393,7 +393,7 @@ var clips = {
 		else 
 			return '<'+tagName+tAttributes+'>'+input+'</'+tagName+'>';
 	},
-	makeTagLines: function(selText, tagName) {
+	makeTagLines: function(selText="", tagName="li") {
 		var input = helpers.processInput(selText);
 		var lines = helpers.makeLines(input);
 		
@@ -403,7 +403,7 @@ var clips = {
 		
 		return lines.join("\n");
 	},
-	addTag: function(tagName,selfClosing=true) {
+	addTag: function(tagName="br",selfClosing=true) {
 		if (selfClosing)
 			return '<'+tagName+'/>'
 		else
@@ -411,37 +411,37 @@ var clips = {
 	},
 	
 	//Attributes
-	addOpen: function() {
+	addOpen: function(selText="") {
 		return ' open="1" openSize="25" randomize="0"';
 	},
-	addExclusive: function() {
+	addExclusive: function(selText="") {
 		return ' exclusive="1" randomize="0"';
 	},
-	addAggregate: function() {
+	addAggregate: function(selText="") {
 		return ' aggregate="0" percentages="0"';
 	},
-	addRandomize: function() {
+	addRandomize: function(selText="") {
 		return ' randomize="0"';
 	},
-	addOptional: function() {
+	addOptional: function(selText="") {
 		return ' optional="1"';
 	},
-	addShuffleRows: function() {
+	addShuffleRows: function(selText="") {
 		return ' shuffle="rows"';
 	},
-	addWhereExecute: function() {
+	addWhereExecute: function(selText="") {
 		return ' where="execute"';
 	},
-	addGroupingCols: function() {
+	addGroupingCols: function(selText="") {
 		return ' grouping="cols" adim="cols"';
 	},
-	addMinRanks: function() {
+	addMinRanks: function(selText="") {
 		return ' minRanks=""';
 	},
-	addOnLoadCopyRows: function() {
+	addOnLoadCopyRows: function(selText="") {
 		return ' onLoad="copy(\'Q#\', rows=True)"';
 	},
-	makeAttrs: function(selText, attrName, attrChars="", attrValues="none") {
+	makeAttrs: function(selText="", attrName="alt", attrChars="", attrValues="none") {
 		var input = helpers.processInput(selText, {skipStrip: true});
 		var lines = helpers.makeLines(input, {skipStrip: true});
 		
@@ -467,7 +467,7 @@ var clips = {
 	},
 	
 	//Misc
-	relabelElements: function(selText) {
+	relabelElements: function(selText="") {
 		var input = helpers.processInput(selText);
 		var lines = helpers.makeLines(input, {skipStrip: true});
 		
@@ -510,7 +510,7 @@ var clips = {
 		return lines.join("\n");
 	},
 	
-	swapRowCol: function(selText) {
+	swapRowCol: function(selText="") {
 		var input = helpers.processInput(selText, {skipStrip: true});
 		var lines = helpers.makeLines(input, {skipStrip: true});
 		
@@ -557,7 +557,7 @@ var clips = {
 	},
 	
 	//---------------------- Standards Clips ---------------------------
-	makeUsStates: function(selectedText){
+	makeUsStates: function(selectedText=""){
 		var comment = "  <comment>"+questionComments[currentOptions.commentsLang].radio+"</comment>\n";
 		var stateChoices = ""
 			+ "  <choice label=\"ch1\">Alabama</choice>\n"
@@ -615,7 +615,7 @@ var clips = {
 		qText = qText.replace("</title>\n","</title>\n"+comment+stateChoices);
 		return qText;
 	},
-	makeUsStatesRegions: function(selectedText) {
+	makeUsStatesRegions: function(selectedText="") {
 		var recodeText = "\n\n"
 			+"<exec>\n"
 			+ "if %s.ival in [30,32,38,6,19,21,29,39,45]:\n"
@@ -641,7 +641,7 @@ var clips = {
 		recodeText = recodeText.replace(/%s/g, qLabel);
 		return qText + recodeText;
 	},
-	makeCountries: function(selectedText){
+	makeCountries: function(selectedText=""){
 		var comment = "  <comment>"+questionComments[currentOptions.commentsLang].radio+"</comment>\n";
 		var countryChoices = "" 
 			+ "  <choice label=\"ch1\">Afghanistan</choice>\n"
@@ -844,11 +844,11 @@ var clips = {
 		return qText;
 	},
 	
-	makeUnselectable: function(selectedText,tag="span") {
+	makeUnselectable: function(selectedText="",tag="span") {
 		return '<'+tag+' style="-moz-user-select: none;-webkit-user-select: none;-ms-user-select: none;" unselectable="on" ondragstart="return false" oncontextmenu="return false">'+selectedText+'</'+tag+'>';
 	},
 	
-	addUnselectable: function() {
+	addUnselectable: function(selectedText="") {
 		return ' style="-moz-user-select: none;-webkit-user-select: none;-ms-user-select: none;" unselectable="on" ondragstart="return false" oncontextmenu="return false"';
 	},
 
@@ -864,7 +864,7 @@ var clips = {
 		contentInput: <str>
 	*/
 	
-	addPopup: function(popupInfo) {
+	addPopup: function(popupInfo={}) {
 		let popupOptions = {width: 400};
 		if (popupInfo.popupWidth !== "") popupOptions["width"] = popupInfo.popupWidth;
 		if (popupInfo.popupHeight !== "") popupOptions["height"] = popupInfo.popupHeight;
@@ -890,7 +890,7 @@ var clips = {
 		return output;
 	},
 	
-	addTooltip: function(tooltipInfo) {
+	addTooltip: function(tooltipInfo={}) {
 		let output = '<span class="self-tooltip">';
 		if (tooltipInfo.baseType === "text") {
 			output += tooltipInfo.baseInput	+ "</span>";
@@ -909,14 +909,70 @@ var clips = {
 		return output;		
 	},
 	
+	addPopupTemplate: function(selText="") {
+		return '<span class="self-popup" onclick="Survey.uidialog.make($ (this).next(\'.popup-content\'), {width: 320, height: 240, title: \'\'} );" >(POP-UP TEXT HERE)</span><div class="popup-content">(POP-UP CONTENT HERE)</div>';
+	},
+	
+	addTooltipTemplate: function(selText="") {
+		return '<span class="self-tooltip">(MOUSE OVER TEXT HERE)</span><span class="tooltip-content">(MOUSEOVER CONTENT HERE)</span>';
+	},
+	
+	rowOrderVirtual: function(selText="") {
+		return '<number label="Q_order" size="2" title="Q order" onLoad="copy(\'Q\', rows=True)">\n'
+				+ '<virtual>\n'
+				+ 'assignRandomOrder("Q", "rows")\n'
+				+ '</virtual>\n'
+				+ '</number>\n';
+	},
+	
+	childOrderBlock: function(bLabel="") {
+		return '<number label="h' + bLabel + '_order" size="2">\n'
+				+ '<virtual>assignRandomOrder("' + bLabel + '", "children")</virtual>\n'
+				+ '<row label="r1">Concept 1</row>\n'
+				+ '<row label="r2">Concept 2</row>\n'
+				+ '<row label="r3">Concept 3</row>\n'
+				+ '</number>\n'
+				+ '<note>Change row labels to the labels of block\'s children, then delete this note</note>\n';
+	},
+	
+	childOrderLoop: function(loopLabel="") {
+		return '<number label="h^' + loopLabel + '_order_" size="2">\n'
+				+ '<virtual>assignRandomOrder("' + loopLabel + '_expanded", "children")</virtual>\n'
+				+ '<row label="' + loopLabel + '_1_expanded">Concept 1</row>\n'
+				+ '<row label="' + loopLabel + '_2_expanded">Concept 2</row>\n'
+				+ '<row label="' + loopLabel + '_3_expanded">Concept 3</row>\n'
+				+ '</number>\n';
+	},
+	
+	dupeCheckVar: function(vName="") {
+		return '\n'
+				+ '<exec when="init"> \n'
+				+ 'db_' + vName + ' = Database(name="' + vName + '") \n'
+				+ '</exec>\n'
+				+ '\n'
+				+ '<exec cond="' + vName + ' != \'\'"> \n'
+				+ 'if db_' + vName + '.has(' + vName + '): \n'
+				+ '	setMarker("' + vName + '_Dupe") \n'
+				+ '</exec>\n'
+				+ '\n'
+				+ '<term cond="hasMarker(\'' + vName + '_Dupe\')" sst="0">' + vName + ' Duplicate</term>\n'
+				+ '\n'
+				+ '<exec cond="' + vName + ' != \'\'" when="finished"> \n'
+				+ 'if ' + vName + ' != \'\': \n'
+				+ '	db_' + vName + '.add(' + vName + ')\n'
+				+ '</exec>\n';
+	},
+	
+	
+	
 	//------------------------ Styles Clips ------------------------------
-	addStyleBlank: function() {
+	addStyleBlank: function(selText="") {
 		return '<style name=""><![CDATA[\n' +
 				'\n' +
 				']]></style>'
 	},
 	
-	newStyleInstead: function(styleName) {
+	newStyleInstead: function(styleName="") {
 		switch (styleName) {
 			//Page styles
 			case "survey.header":
@@ -1321,16 +1377,172 @@ var clips = {
 		}
 	},
 	
-	newStyleBeforeAfter: function(styleObj) {
+	newStyleBeforeAfter: function(styleObj={}) {
 		return '<style name="' + styleObj.style + '" mode="' + styleObj.mode + '"><![CDATA[\n' +
 				'\n' +
 				']]></style>';
 	},
 	
-	newStyleSpecial: function(styleName) {
+	newStyleSpecial: function(styleName="") {
 		return '<style name="' + styleName + '"><![CDATA[\n' +
 				'\n' +
 				']]></style>';
+	},
+	
+	addStyleLabel: function(selText="") {
+		return '<style name="" label=""> <![CDATA[\n'
+				+ '\n'
+				+ ']]></style>';
+	},
+	
+	addStyleCopy: function(selText="") {
+		return '<style copy="" /> ';
+	},
+	
+	surveyCss: function(selText="") {
+		return '<style mode="after" name="respview.client.css"><![CDATA[\n'
+				+ '<style type="text/css">\n'
+				+ '\n'
+				+ '</style>\n'
+				+ ']]></style>\n';
+	},
+	
+	surveyJs: function(selText="") {
+		return '<style mode="after" name="respview.client.js"> <![CDATA[\n'
+				+ '<script>\n'
+				+ '\n'
+				+ '</script>\n'
+				+ ']]></style>\n';
+	},
+	
+	questionCss: function(selText="") {
+		return '<style name="page.head"><![CDATA[\n'
+				+ '<style type="text/css">\n'
+				+ '#question_$(this.label) {\n'
+				+ '\n'
+				+ '}\n'
+				+ '</style>\n'
+				+ ']]></style>\n';
+	},
+	
+	questionJs: function(selText="") {
+		return '<style name="question.footer" mode="after" wrap="ready" ><![CDATA[\n'
+				+ '$q = $ ("#question_$(this.label)");\n'
+				+ ']]></style>\n';
+	},
+	
+	questionJsHead: function(selText="") {
+		return '<style name="page.head" wrap="ready" ><![CDATA[\n'
+				+ '$q = $ ("#question_$(this.label)");\n'
+				+ ']]></style>\n';
+	},
+	
+	numberPipe: function(numPipeInfo={}) {
+		var multiColStr = numPipeInfo.qType === "multi" ? "[0]" : "";
+
+		return '<style name="question.top-legend-item" arg:colText="Replace with res tag" mode="before" cond="col.index == 0"> <![CDATA[\n'
+				+ '\@if ec.simpleList\n'
+				+ '    <div id="$(this.label)_$(col.label)" class="legend col-legend col-legend-top col-legend-basic $(levels) ${"col-legend-space" if this.grouping.cols and (col.group or col.index!=0) and ec.haveLeftLegend and ec.haveRightLegend else "border-collapse"} $(col.styles.ss.colClassNames) ${col.group.styles.ss.groupClassNames if col.group else ""} $(colError)">\n'
+				+ '        $(colText)\n'
+				+ '    </div>\n'
+				+ '\@else\n'
+				+ '\@if this.styles.ss.colWidth\n'
+				+ '    <$(tag) scope="col" id="$(this.label)_$(col.label)" class="cell nonempty legend col-legend col-legend-top col-legend-basic $(levels) ${"desktop" if this.grouping.cols else "mobile"} ${"col-legend-space" if this.grouping.cols and (col.group or col.index!=0) and ec.haveLeftLegend and ec.haveRightLegend else "border-collapse"} $(col.styles.ss.colClassNames) ${col.group.styles.ss.groupClassNames if col.group else ""} $(colError)" style="width:${this.styles.ss.colWidth}; min-width:${this.styles.ss.colWidth}">\n'
+				+ '        $(colText)\n'
+				+ '    </$(tag)>\n'
+				+ '\@else\n'
+				+ '    <$(tag) scope="col" id="$(this.label)_$(col.label)" class="cell nonempty legend col-legend col-legend-top col-legend-basic $(levels) ${"desktop" if this.grouping.cols else "mobile"} ${"col-legend-space" if this.grouping.cols and (col.group or col.index!=0) and ec.haveLeftLegend and ec.haveRightLegend else "border-collapse"} $(col.styles.ss.colClassNames) ${col.group.styles.ss.groupClassNames if col.group else ""} $(colError)">\n'
+				+ '        $(colText)\n'
+				+ '    </$(tag)>\n'
+				+ '\@endif\n'
+				+ '\@endif\n'
+				+ ']]></style>\n'
+				+ '<style name="question.element" mode="before" cond="col.index == 0"> <![CDATA[\n'
+				+ '\@if ec.simpleList\n'
+				+ '<div class="element $(rowStyle) $(levels) $(extraClasses) ${col.group.styles.ss.groupClassNames if col.group else (row.group.styles.ss.groupClassNames if row.group else "")} $(col.styles.ss.colClassNames) $(row.styles.ss.rowClassNames) ${"clickableCell" if isClickable else ""}"$(extra)>\n'
+				+ '     ${' + numPipeInfo.qLabel + '.rows[row.index]' + multiColStr + '.ival}\n'
+				+ '</div>\n'
+				+ '\@else\n'
+				+ '<$(tag) $(headers) class="cell nonempty element $(levels) ${"desktop" if this.grouping.cols else "mobile"} border-collapse $(extraClasses) ${col.group.styles.ss.groupClassNames if col.group else (row.group.styles.ss.groupClassNames if row.group else "")} $(col.styles.ss.colClassNames) $(row.styles.ss.rowClassNames) ${"clickableCell" if isClickable else ""}"$(extra)>\n'
+				+ '     ${' + numPipeInfo.qLabel + '.rows[row.index]' + multiColStr + '.ival}\n'
+				+ '</$(tag)>\n'
+				+ '\@endif\n'
+				+ ']]></style>\n';
+	},
+	
+	leftBlankLegend: function(selText="") {
+		return '  <res label="leftLegend">Left-blank-legend text</res>\n'
+				+ '  <style name="question.left-blank-legend"><![CDATA[\n'
+				+ '<$(tag) class="pseudo-col-legend nonempty">${res["%s,leftLegend" % this.label]}</$(tag)>\n'
+				+ ']]></style>\n';
+	},
+	
+	disableContinue: function(selText="") {
+		return '<style name="buttons" mode="after" with="Q5" wrap="ready" arg:timeout="5"><![CDATA[\n'
+				+ '$ ("#btn_continue,#btn_finish").prop("disabled", true);\n'
+				+ 'setTimeout(function() {\n'
+				+ '	$ ("#btn_continue,#btn_finish").prop("disabled", false);\n'
+				+ '}, $(timeout)*1000);\n'
+				+ ']]></style>\n';
+	},
+	
+	maxDiff: function(selText="") {
+		return '<style name="question.top-legend"> <![CDATA[\n'
+				+ '\@if ec.simpleList\n'
+				+ '    $(legends)\n'
+				+ '\@else\n'
+				+ '\@if this.styles.ss.colLegendHeight\n'
+				+ '    <$(tag) class="row row-col-legends row-col-legends-top ${"mobile-top-row-legend " if mobileOnly else ""}${"GtTenColumns " if ec.colCount > 10 else ""}colCount-$(colCount)" style="height:${this.styles.ss.colLegendHeight};">\n'
+				+ '\@else\n'
+				+ '    <$(tag) class="row row-col-legends row-col-legends-top ${"mobile-top-row-legend " if mobileOnly else ""}${"GtTenColumns " if ec.colCount > 10 else ""}colCount-$(colCount)">\n'
+				+ '\@endif\n'
+				+ '    ${legends.split("</th>")[0]}</th>\n'
+				+ '    $(left)\n'
+				+ '    ${legends.split("</th>")[1]}</th>\n'
+				+ '</$(tag)>\n'
+				+ '\@if not simple\n'
+				+ '</tbody>\n'
+				+ '<tbody>\n'
+				+ '\@endif\n'
+				+ '\@endif\n'
+				+ ']]></style>\n'
+				+ '<style name="question.row"> <![CDATA[\n'
+				+ '\@if ec.simpleList\n'
+				+ '$(elements)\n'
+				+ '\@else\n'
+				+ '\@if this.styles.ss.rowHeight\n'
+				+ '    <$(tag) class="row row-elements $(style) colCount-$(colCount)" style="height:${this.styles.ss.rowHeight};">\n'
+				+ '\@else\n'
+				+ '    <$(tag) class="row row-elements $(style) colCount-$(colCount)">\n'
+				+ '\@endif\n'
+				+ '${elements.split("</td>")[0]}</td>\n'
+				+ '$(left)\n'
+				+ '${elements.split("</td>")[1]}</td>\n'
+				+ '</$(tag)>\n'
+				+ '\@endif\n'
+				+ ']]></style>\n';
+	},
+	
+	colFix: function(selText="") {
+		return '<style label="colFix" name="question.element"> <![CDATA[\n'
+				+ '\@if ec.simpleList\n'
+				+ '<div class="element $(rowStyle) $(levels) $(extraClasses) ${col.group.styles.ss.groupClassNames if col.group else (row.group.styles.ss.groupClassNames if row.group else "")} $(col.styles.ss.colClassNames) $(row.styles.ss.rowClassNames) ${"clickableCell" if isClickable else ""} row-${ec.row.label.replace("r","") if ec.row.label else "1"} col-${ec.col.label.replace("c","") if ec.col.label else "1"}" data-row="${ec.row.label.replace("r","") if ec.row.label else "1"}" data-col="${ec.col.label.replace("c","") if ec.col.label else "1"}"$(extra)>\n'
+				+ '    ${v2_insertStyle(\'el.label.start\')}\n'
+				+ '    $(text)\n'
+				+ '    ${v2_insertStyle(\'el.label.end\')}\n'
+				+ '</div>\n'
+				+ '\@else\n'
+				+ '<$(tag) $(headers) class="cell nonempty element $(levels) ${"desktop" if this.grouping.cols else "mobile"} border-collapse $(extraClasses) ${col.group.styles.ss.groupClassNames if col.group else (row.group.styles.ss.groupClassNames if row.group else "")} $(col.styles.ss.colClassNames) $(row.styles.ss.rowClassNames) ${"clickableCell" if isClickable else ""} row-${ec.row.label.replace("r","") if ec.row.label else "1"} col-${ec.col.label.replace("c","") if ec.col.label else "1"}" data-row="${ec.row.label.replace("r","") if ec.row.label else "1"}" data-col="${ec.col.label.replace("c","") if ec.col.label else "1"}"$(extra)>\n'
+				+ '    ${v2_insertStyle(\'el.label.start\')}\n'
+				+ '    $(text)\n'
+				+ '    ${v2_insertStyle(\'el.label.end\')}\n'
+				+ '</$(tag)>\n'
+				+ '\@endif\n'
+				+ ']]></style>\n';
+	},
+	
+	colFixCopy: function(selText="") {
+		return '<style copy="colFix" />';
 	}
 };
 
@@ -1466,7 +1678,16 @@ var cmStandards = {
 		
 		{id: "cm-sep-popups", type: "separator"},
 		
-		{id: "panel-popups", title: get_i18n("cm_addPopup")}
+		{id: "panel-popups", title: get_i18n("cm_addPopup")},
+		{id: "addPopupTemplate", title: get_i18n("cm_addPopupTemplate")},
+		{id: "addTooltipTemplate", title: get_i18n("cm_addTooltipTemplate")},
+		
+		{id: "cm-sep-std-misc", type: "separator"},
+		
+		{id: "rowOrderVirtual", title: get_i18n("cm_rowOrderVirtual")},
+		{id: "panel-textInput-block", title: get_i18n("cm_childOrderBlock")},
+		{id: "panel-textInput-loop", title: get_i18n("cm_childOrderLoop")},
+		{id: "panel-textInput-dupe", title: get_i18n("cm_dupeCheckVar")},
 	]
 };
 
@@ -1477,6 +1698,22 @@ var cmXML = {
 	children: [
 		{id: "addStyleBlank", title: get_i18n("cm_addStyleBlank")},
 		{id: "panel-styles", title: get_i18n("cm_newStyleInstead")},
+		{id: "addStyleLabel", title: get_i18n("cm_addStyleLabel")},
+		{id: "addStyleCopy", title: get_i18n("cm_addStyleCopy")},
+		{id: "surveyCss", title: get_i18n("cm_surveyCss")},
+		{id: "surveyJs", title: get_i18n("cm_surveyJs")},
+		{id: "questionCss", title: get_i18n("cm_questionCss")},
+		{id: "questionJs", title: get_i18n("cm_questionJs")},
+		{id: "questionJsHead", title: get_i18n("cm_questionJsHead")},
+		
+		{id: "cm-sep-ready-to-use", type: "separator"},
+		
+		{id: "leftBlankLegend", title: get_i18n("cm_leftBlankLegend")},
+		{id: "panel-numberPipe", title: get_i18n("cm_numberPipe")},
+		{id: "disableContinue", title: get_i18n("cm_disableContinue")},
+		{id: "maxDiff", title: get_i18n("cm_maxDiff")},
+		{id: "colFix", title: get_i18n("cm_colFix")},
+		{id: "colFixCopy", title: get_i18n("cm_colFixCopy")}
 	]
 };
 
@@ -1531,48 +1768,7 @@ function replaceTabText(_tabId, _cmId) {
 		var selectedText = receivedText; // TO DO: Re-implement clipboard use
 	
 		switch (_cmId) {
-			//Control Elements
-			case "makeTerm":
-				newText = clips.makeTerm(selectedText);
-				break;
-			
-			case "makeQuota":
-				newText = clips.makeQuota(selectedText);
-				break;
-			
-			case "makeValidate":
-				newText = clips.makeValidate(selectedText);
-				break;
-			
-			case "makeResource":
-				newText = clips.makeResource(selectedText);
-				break;
-			
-			case "makeExec":
-				newText = clips.makeExec(selectedText);
-				break;
-			
-			case "makeBlock":
-				newText = clips.makeBlock(selectedText);
-				break;
-			
-			case "makeBlockChildren":
-				newText = clips.makeBlockChildren(selectedText);
-				break;
-			
-			case "makeLoop":
-				newText = clips.makeLoop(selectedText);
-				break;
-			
-			case "makeMarker":
-				newText = clips.makeMarker(selectedText);
-				break;
-			
-			case "makeCondition":
-				newText = clips.makeCondition(selectedText);
-				break;
-	    
-	    
+    
 				
 			//Question Types
 			case "makeRadio":
@@ -1611,13 +1807,6 @@ function replaceTabText(_tabId, _cmId) {
 				newText = clips.makeQuestion(selectedText,"autosumPercent");
 				break;
 				
-			case "makeSurveyComment":
-				newText = clips.makeSurveyComment(selectedText);
-				break;
-				
-			case "makeAutofill":
-				newText = clips.makeAutofill(selectedText);
-				break;
 				
 			//Question Elements
 			case "makeRows":
@@ -1656,17 +1845,11 @@ function replaceTabText(_tabId, _cmId) {
 				newText = clips.makeElements(selectedText,elType="choices",values=true,valuesDir="down");
 				break;
 			
-			case "makeNoAnswer":
-				newText = clips.makeNoAnswer(selectedText);
-				break;
 			
 			case "makeGroups":
 				newText = clips.makeElements(selectedText,elType="groups");
 				break;
-			
-			case "makeQuestionComment":
-				newText = clips.makeQuestionComment(selectedText);
-				break;
+
 			
 			case "makeAutofillRows":
 				newText = clips.makeElements(selectedText,elType="autofillRows");
@@ -1737,45 +1920,6 @@ function replaceTabText(_tabId, _cmId) {
 				break;
 			
 			//Attributes
-			case "addOpen":
-				newText = clips.addOpen();
-				break;
-			
-			case "addExclusive":
-				newText = clips.addExclusive();
-				break;
-			
-			case "addAggregate":
-				newText = clips.addAggregate();
-				break;
-			
-			case "addRandomize":
-				newText = clips.addRandomize();
-				break;
-			
-			case "addOptional":
-				newText = clips.addOptional();
-				break;
-			
-			case "addShuffleRows":
-				newText = clips.addShuffleRows();
-				break;
-			
-			case "addWhereExecute":
-				newText = clips.addWhereExecute();
-				break;
-			
-			case "addGroupingCols":
-				newText = clips.addGroupingCols();
-				break;
-			
-			case "addMinRanks":
-				newText = clips.addMinRanks();
-				break;
-			
-			case "addOnLoadCopyRows":
-				newText = clips.addOnLoadCopyRows();
-				break;
 	    
 			case "makeAttrs_alt":
 				newText = clips.makeAttrs(selectedText,attrName="alt");
@@ -1798,26 +1942,6 @@ function replaceTabText(_tabId, _cmId) {
 				break;
 			
 			//Misc Clips
-			case "relabelElements":
-				newText = clips.relabelElements(selectedText);
-				break;
-	    
-			case "swapRowCol":
-				newText = clips.swapRowCol(selectedText);
-				break;
-			
-			//Standards Clips
-			case "makeUsStates":
-				newText = clips.makeUsStates(selectedText);
-				break;
-			
-			case "makeUsStatesRegions":
-				newText = clips.makeUsStatesRegions(selectedText);
-				break;
-			
-			case "makeCountries":
-				newText = clips.makeCountries(selectedText);
-				break;				
 			
 			case "makeUnselectable_span":
 				newText = clips.makeUnselectable(selectedText,tag="span");
@@ -1827,21 +1951,9 @@ function replaceTabText(_tabId, _cmId) {
 				newText = clips.makeUnselectable(selectedText,tag="div");
 				break;
 			
-			case "addUnselectable":
-				newText = clips.addUnselectable();
-				break;
-			
-			
-			//Styles Clips
-			case "addStyleBlank":
-				newText = clips.addStyleBlank();
-				break;
-			
 			
 			default:
-				newText = selectedText;
-				console.log({_cmId, newText});
-				console.log("Clip command not recognized");
+				newText = selectedText == "" ? clips[_cmId]() : clips[_cmId](selectedText);
 				break;
 		} //End switch
 	
@@ -1857,7 +1969,9 @@ function replaceTabText(_tabId, _cmId) {
 function openPanel(whichPanel = "styles") {
 	var panelSizes = {
 		"styles": {width: 750, height: 740},
-		"popups": {width: 700, height: 650},
+		"popups": {width: 600, height: 550},
+		"numberPipe": {width: 550, height: 100},
+		"textInput": {width: 420, height: 100}
 	}
 	
 	if (Object.keys(panelSizes).indexOf(whichPanel) === -1) {
@@ -1909,6 +2023,9 @@ function cmListener(cmdata, tab) {
 				tabId: tabId
 			};
 			
+			if (panelSelector == "textInput")
+				helpers.panelCommandInfo.panelSubtype = cmId.split("-")[2];
+			
 			openPanel(panelSelector);		
 			
 		} else {
@@ -1928,7 +2045,6 @@ function rtListener(message, tab, sendResponse) {
 			break;
 		
 		case "options-info-request":
-			console.log("sending defaults", helpers.defaultOptions);
 			sendResponse(helpers.defaultOptions);
 			break;
 		
@@ -1958,6 +2074,37 @@ function rtListener(message, tab, sendResponse) {
 			setTabText(commandInfo.tabId, processedText);
 			
 			break;
+		
+		// Number pipe panel handler section
+		case "num-pipe-selection":
+			var commandInfo = message.commandInfo;
+			
+			var processedText = clips.numberPipe(message.numPipeInfo);
+			
+			setTabText(commandInfo.tabId, processedText);
+		
+		// Text input panel handler section (block, loop order virtual, dupe check by variable)
+		case "text-input-selection":
+			var commandInfo = message.commandInfo;
+			
+			switch (commandInfo.panelSubtype) {
+				case "block":
+					var processedText = clips.childOrderBlock(message.tInput);
+					break;
+					
+				case "loop":
+					var processedText = clips.childOrderLoop(message.tInput);
+					break;
+				
+				case "dupe":
+					var processedText = clips.dupeCheckVar(message.tInput);
+					break;
+				
+				default:
+					var processedText = "";
+			}
+		
+			setTabText(commandInfo.tabId, processedText);
 		
 		default:
 			break;
