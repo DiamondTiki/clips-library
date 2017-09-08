@@ -939,7 +939,7 @@ var clips = {
 	},
 	
 	childOrderLoop: function(loopLabel="") {
-		return '<number label="h^' + loopLabel + '_order_" size="2">\n'
+		return '<number label="h' + loopLabel + '_order_" size="2">\n'
 				+ '<virtual>assignRandomOrder("' + loopLabel + '_expanded", "children")</virtual>\n'
 				+ '<row label="' + loopLabel + '_1_expanded">Concept 1</row>\n'
 				+ '<row label="' + loopLabel + '_2_expanded">Concept 2</row>\n'
