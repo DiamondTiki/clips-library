@@ -1,7 +1,12 @@
 #Decipher Clips
+
 Add-on
 
 #Change Log
+
+0.0.5 (in development):
+  - Fixed loop order virtual clip
+
 0.0.4:
   - Feature complete
   - Ported to web-extensions
