@@ -1574,9 +1574,9 @@ var cmControl = {
 	]
 };
 
-var cmQuestion = {
-	id: "cm-question",
-	title: get_i18n("cm_quesitonsElements"),
+var cmQuestions = {
+	id: "cm-questions",
+	title: get_i18n("cm_quesitons"),
 	contexts: ["all"],
 	children: [
 		//Question Types
@@ -1591,9 +1591,14 @@ var cmQuestion = {
 		{id: "makeAutosumPercent", title: get_i18n("cm_makeAutosumPercent")},
 		{id: "makeSurveyComment", title: get_i18n("cm_makeSurveyComment")},
 		{id: "makeAutofill", title: get_i18n("cm_makeAutofill")},
-		
-		{id: "cm-sep-question-end", type: "separator"},
-		
+	]
+};
+
+var cmElements = {
+	id: "cm-elements",
+	title: get_i18n("cm_elements"),
+	contexts: ["all"],
+	children: [
 		//Question Elements
 		{id: "makeRows", title: get_i18n("cm_makeRows")},
 		{id: "makeRowsRatingUp", title: get_i18n("cm_makeRowsRatingUp")},
@@ -1632,9 +1637,14 @@ var cmText = {
 		{id: "makeTag_note", title: get_i18n("cm_makeTag_note")},
 		{id: "makeTag_spanClass", title: get_i18n("cm_makeTag_spanClass")},
 		{id: "makeTag_spanStyle", title: get_i18n("cm_makeTag_spanStyle")},
-		
-		{id: "cm-sep-textc-end", type: "separator"},
+	]
+};
 
+var cmAttr = {
+	id: "cm-attr",
+	title: get_i18n("cm_attrMenu"),
+	contexts: ["all"],
+	children: [
 		//Attributes
 		{id: "addOpen", title: get_i18n("cm_addOpen")},
 		{id: "addExclusive", title: get_i18n("cm_addExclusive")},
@@ -1722,8 +1732,10 @@ var cmXML = {
 
 var cmMain = [
 	cmControl,
-	cmQuestion,
+	cmQuestions,
+	cmElements,
 	cmText,
+	cmAttr,
 	cmMisc,
 	cmStandards,
 	cmXML,

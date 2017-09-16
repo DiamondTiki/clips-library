@@ -43,9 +43,9 @@
 		"message": "Make Condition",
 		"description": "Make condition tag menu item"
 	},
-	"cm_quesitonsElements": {
-		"message": "Questions & Elements",
-		"description": "Questions & Elements menu text"
+	"cm_quesitons": {
+		"message": "Questions",
+		"description": "Questions menu text"
 	},
 	"cm_makeRadio": {
 		"message": "Make Radio",
@@ -90,6 +90,10 @@
 	"cm_makeAutofill": {
 		"message": "Make Autofill",
 		"description": "Make autofill question menu item"
+	},
+	"cm_elements": {
+		"message": "Elements",
+		"description": "Elements menu text"
 	},
 	"cm_makeRows": {
 		"message": "Make Rows",
@@ -144,8 +148,8 @@
 		"description": "MAke autofill question row tags menu item"
 	},
 	"cm_textMenu": {
-		"message": "Text Formatting & Attributes",
-		"description": "Text formatting and attributes menu text"
+		"message": "Text Formatting",
+		"description": "Text formatting menu text"
 	},
 	"cm_makeTag_b": {
 		"message": "<b>",
@@ -206,6 +210,10 @@
 	"cm_makeTag_spanStyle": {
 		"message": "<span style=\"\">",
 		"description": "Make span tag with style menu item"
+	},	
+	"cm_attrMenu": {
+		"message": "Attributes",
+		"description": "Attributes menu text"
 	},
 	"cm_addOpen": {
 		"message": "Add Open-End",
