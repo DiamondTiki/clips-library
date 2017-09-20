@@ -1941,7 +1941,7 @@ function replaceTabText(_tabId, _cmId) {
 				break;
 	    
 			case "makeAttrs_group":
-				newText = clips.makeAttrs(selectedText,attrName="group",attrChars="g");
+				newText = clips.makeAttrs(selectedText,attrName="groups",attrChars="g");
 				break;
 				
 			case "makeAttrs_value":
