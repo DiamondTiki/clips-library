@@ -1,4 +1,6 @@
-var storage = browser.storage.local;
+var api = browser;
+
+var storage = api.storage.local;
 
 var helpers = {
 	// Initial options
@@ -74,7 +76,7 @@ var currentOptions = $.extend({}, helpers.defaultOptions);
 
 helpers.refreshOptions();
 
-browser.storage.onChanged.addListener(helpers.refreshOptions);
+api.storage.onChanged.addListener(helpers.refreshOptions);
 
 
 
@@ -1552,9 +1554,9 @@ var clips = {
 
 
 
-var cm__add = browser.contextMenus.create;
+var cm__add = api.contextMenus.create;
 
-var get_i18n = browser.i18n.getMessage;
+var get_i18n = api.i18n.getMessage;
 
 var cmControl = {
 	id: "cm-control",
@@ -1765,7 +1767,7 @@ cmMain.forEach(function(cmItem, cmIndex, cmArr) {
 });
 
 
-var ts_message = browser.tabs.sendMessage;
+var ts_message = api.tabs.sendMessage;
 
 // TO DO: Move TabText's and panel opener into helpers
 
@@ -1994,11 +1996,11 @@ function openPanel(whichPanel = "styles") {
 		return false;
 	} 
 	
-	var openingPanel = browser.windows.create({
+	var openingPanel = api.windows.create({
 		type: "panel",
 		width: panelSizes[whichPanel].width,
 		height: panelSizes[whichPanel].height,
-		url: browser.extension.getURL("src/panels/"+whichPanel+"_panel.html")
+		url: api.extension.getURL("src/panels/"+whichPanel+"_panel.html")
 	}).catch(reason => {
 		console.log("Failed opening panel");
 		console.log(reason);
@@ -2006,8 +2008,8 @@ function openPanel(whichPanel = "styles") {
 }
 
 
-var cm_addListener = browser.contextMenus.onClicked.addListener;
-var rt_addListener = browser.runtime.onMessage.addListener;
+var cm_addListener = api.contextMenus.onClicked.addListener;
+var rt_addListener = api.runtime.onMessage.addListener;
 
 // Context menu listener
 function cmListener(cmdata, tab) {
@@ -2022,7 +2024,7 @@ function cmListener(cmdata, tab) {
 		// cm- items not mentioned here will have no effect on click	
 		switch (cmId) {
 			case "cm-prefs":
-				var openingOptions = browser.runtime.openOptionsPage();
+				var openingOptions = api.runtime.openOptionsPage();
 				break
 			
 			default:

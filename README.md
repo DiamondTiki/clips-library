@@ -6,6 +6,7 @@ Add-on
 
 0.0.5 (in development):
   - Fixed loop order virtual clip
+  - bound "browser" object to variable api to make it easier to use the main namespace for extension APIs in each browser
 
 0.0.4:
   - Feature complete
