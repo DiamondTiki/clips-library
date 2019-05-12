@@ -1625,9 +1625,11 @@ var cmText = {
 	children: [
 		//Text Formatting
 		{id: "makeTag_b", title: get_i18n("cm_makeTag_b")},
+		{id: "makeTag_strong", title: get_i18n("cm_makeTag_strong")},
 		{id: "makeTag_u", title: get_i18n("cm_makeTag_u")},
 		{id: "makeTag_ub", title: get_i18n("cm_makeTag_ub")},
 		{id: "makeTag_i", title: get_i18n("cm_makeTag_i")},
+		{id: "makeTag_em", title: get_i18n("cm_makeTag_em")},
 		{id: "makeTag_ul", title: get_i18n("cm_makeTag_ul")},
 		{id: "makeTag_ol", title: get_i18n("cm_makeTag_ol")},
 		{id: "makeTag_li", title: get_i18n("cm_makeTag_li")},
@@ -1878,6 +1880,10 @@ function replaceTabText(_tabId, _cmId) {
 				newText = clips.makeTag(selectedText,tagName="b");
 				break;				
 			
+			case "makeTag_strong":
+				newText = clips.makeTag(selectedText,tagName="strong");
+				break;				
+			
 			case "makeTag_u":
 				newText = clips.makeTag(selectedText,tagName="u");
 				break;				
@@ -1890,6 +1896,10 @@ function replaceTabText(_tabId, _cmId) {
 			case "makeTag_i":
 				newText = clips.makeTag(selectedText,tagName="i");
 				break;				
+			
+			case "makeTag_em":
+				newText = clips.makeTag(selectedText,tagName="em");
+				break;
 			
 			case "makeTag_ul":
 				newText = clips.makeTag(selectedText,tagName="ul",newLineContent=true);
