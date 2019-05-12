@@ -1,7 +1,16 @@
 browser.runtime.onMessage.addListener( textHandler );
 
+function get_codemirror() {
+	if (window.wrappedJSObject.editor && window.wrappedJSObject.editor.codemirror) {
+		return window.wrappedJSObject.editor.codemirror;
+	} else {
+		return null;
+	}
+}
+
 function textHandler(message, senderObj, sendResponse) {
 	var command = message.type;
+	var codemirror = get_codemirror();
 	if (command == "get-text") {
 
 		var strSelected = null;
@@ -10,9 +19,9 @@ function textHandler(message, senderObj, sendResponse) {
 		
 		
 		// Get selected text and element's content
-		if (window.wrappedJSObject.decipher && window.wrappedJSObject.decipher.__editor__) {
+		if (codemirror !== null) {
 			//If selection is in XML Editor CodeMirror
-			strSelected = window.wrappedJSObject.decipher.__editor__.doc.getSelection();
+			strSelected = codemirror.getSelection();
 		} else if (textElement.tagName == "INPUT" || textElement.tagName == "TEXTAREA") {
 			// For input/text areas
 			var startPos = textElement.selectionStart;
@@ -32,9 +41,9 @@ function textHandler(message, senderObj, sendResponse) {
 		var updatedText = message.newText;
 		var tB = document.activeElement;
 		
-		if (window.wrappedJSObject.decipher && window.wrappedJSObject.decipher.__editor__) {
+		if (codemirror !== null) {
 			//If selection is in XML Editor CodeMirror
-			window.wrappedJSObject.decipher.__editor__.replaceSelection(updatedText);
+			codemirror.replaceSelection(updatedText);
 		} else if (tB.tagName.toLowerCase() == "input" || tB.tagName.toLowerCase() == "textarea") {
 			//if selection is in a text box
 			var tPosition = tB.scrollTop;

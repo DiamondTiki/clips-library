@@ -1,4 +1,6 @@
-var storage = browser.storage.local;
+var api = browser;
+
+var storage = api.storage.local;
 
 var helpers = {
 	// Initial options
@@ -74,7 +76,7 @@ var currentOptions = $.extend({}, helpers.defaultOptions);
 
 helpers.refreshOptions();
 
-browser.storage.onChanged.addListener(helpers.refreshOptions);
+api.storage.onChanged.addListener(helpers.refreshOptions);
 
 
 
@@ -1552,9 +1554,9 @@ var clips = {
 
 
 
-var cm__add = browser.contextMenus.create;
+var cm__add = api.contextMenus.create;
 
-var get_i18n = browser.i18n.getMessage;
+var get_i18n = api.i18n.getMessage;
 
 var cmControl = {
 	id: "cm-control",
@@ -1623,9 +1625,11 @@ var cmText = {
 	children: [
 		//Text Formatting
 		{id: "makeTag_b", title: get_i18n("cm_makeTag_b")},
+		{id: "makeTag_strong", title: get_i18n("cm_makeTag_strong")},
 		{id: "makeTag_u", title: get_i18n("cm_makeTag_u")},
 		{id: "makeTag_ub", title: get_i18n("cm_makeTag_ub")},
 		{id: "makeTag_i", title: get_i18n("cm_makeTag_i")},
+		{id: "makeTag_em", title: get_i18n("cm_makeTag_em")},
 		{id: "makeTag_ul", title: get_i18n("cm_makeTag_ul")},
 		{id: "makeTag_ol", title: get_i18n("cm_makeTag_ol")},
 		{id: "makeTag_li", title: get_i18n("cm_makeTag_li")},
@@ -1765,7 +1769,7 @@ cmMain.forEach(function(cmItem, cmIndex, cmArr) {
 });
 
 
-var ts_message = browser.tabs.sendMessage;
+var ts_message = api.tabs.sendMessage;
 
 // TO DO: Move TabText's and panel opener into helpers
 
@@ -1876,6 +1880,10 @@ function replaceTabText(_tabId, _cmId) {
 				newText = clips.makeTag(selectedText,tagName="b");
 				break;				
 			
+			case "makeTag_strong":
+				newText = clips.makeTag(selectedText,tagName="strong");
+				break;				
+			
 			case "makeTag_u":
 				newText = clips.makeTag(selectedText,tagName="u");
 				break;				
@@ -1888,6 +1896,10 @@ function replaceTabText(_tabId, _cmId) {
 			case "makeTag_i":
 				newText = clips.makeTag(selectedText,tagName="i");
 				break;				
+			
+			case "makeTag_em":
+				newText = clips.makeTag(selectedText,tagName="em");
+				break;
 			
 			case "makeTag_ul":
 				newText = clips.makeTag(selectedText,tagName="ul",newLineContent=true);
@@ -1994,11 +2006,11 @@ function openPanel(whichPanel = "styles") {
 		return false;
 	} 
 	
-	var openingPanel = browser.windows.create({
+	var openingPanel = api.windows.create({
 		type: "panel",
 		width: panelSizes[whichPanel].width,
 		height: panelSizes[whichPanel].height,
-		url: browser.extension.getURL("src/panels/"+whichPanel+"_panel.html")
+		url: api.extension.getURL("src/panels/"+whichPanel+"_panel.html")
 	}).catch(reason => {
 		console.log("Failed opening panel");
 		console.log(reason);
@@ -2006,8 +2018,8 @@ function openPanel(whichPanel = "styles") {
 }
 
 
-var cm_addListener = browser.contextMenus.onClicked.addListener;
-var rt_addListener = browser.runtime.onMessage.addListener;
+var cm_addListener = api.contextMenus.onClicked.addListener;
+var rt_addListener = api.runtime.onMessage.addListener;
 
 // Context menu listener
 function cmListener(cmdata, tab) {
@@ -2022,7 +2034,7 @@ function cmListener(cmdata, tab) {
 		// cm- items not mentioned here will have no effect on click	
 		switch (cmId) {
 			case "cm-prefs":
-				var openingOptions = browser.runtime.openOptionsPage();
+				var openingOptions = api.runtime.openOptionsPage();
 				break
 			
 			default:

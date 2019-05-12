@@ -155,6 +155,10 @@
 		"message": "<b>",
 		"description": "Make b tag menu item"
 	},
+	"cm_makeTag_strong": {
+		"message": "<srtong>",
+		"description": "Make strong tag menu item"
+	},
 	"cm_makeTag_u": {
 		"message": "<u>",
 		"description": "Make u tag menu item"
@@ -166,6 +170,10 @@
 	"cm_makeTag_i": {
 		"message": "<i>",
 		"description": "Make i tag menu item"
+	},
+	"cm_makeTag_em": {
+		"message": "<em>",
+		"description": "Make em tag menu item"
 	},
 	"cm_makeTag_ul": {
 		"message": "<ul>",

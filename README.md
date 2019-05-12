@@ -4,8 +4,11 @@ Add-on
 
 #Change Log
 
-0.0.5 (in development):
+0.0.5:
   - Fixed loop order virtual clip
+  - bound "browser" object to variable api to make it easier to use the main namespace for extension APIs in each browser
+  - Updated referencing the XML Editor CodeMirror instance
+  - Added strong and em tag clips
 
 0.0.4:
   - Feature complete
